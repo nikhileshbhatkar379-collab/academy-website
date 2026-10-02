@@ -39,21 +39,14 @@ You can open the website in your browser right away:
 
 ---
 
-## ✉️ 2. Setting Up the Contact & Enrollment Forms (Formspree)
+## ✉️ 2. Contact & Enrollment Forms (FormSubmit)
 
-Both the **Contact Form** (`index.html`) and the **Enrollment Form** (`enroll.html`) are pre-wired for **Formspree** (free service, no backend server required):
+Both the **Contact Form** (`index.html`) and the **Enrollment Form** (`enroll.html`) are connected to **FormSubmit** targeting `nikhileshbhatkar379@gmail.com`:
 
-1. Go to **[https://formspree.io](https://formspree.io)** and create a free account with your email (`nikhileshbhatkar379@gmail.com`).
-2. Click **"+ New Form"**, give it a name (e.g., *Academy Inquiries*), and copy the form endpoint URL (format: `https://formspree.io/f/xyzab123`).
-3. In `index.html` and `enroll.html`, replace `YOUR_FORMSPREE_ID` with your form ID:
-   ```html
-   <!-- Before: -->
-   <form id="contactForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST">
-
-   <!-- After: -->
-   <form id="contactForm" action="https://formspree.io/f/xyzab123" method="POST">
-   ```
-4. All messages and student enrollments will now land straight in your inbox!
+### How It Works:
+1. When a visitor or student fills out the contact or enrollment form, FormSubmit packages the submission data and sends it straight to **nikhileshbhatkar379@gmail.com**.
+2. **First-Time Activation:** When the very first form is submitted on your live website, FormSubmit will send a one-time verification email to `nikhileshbhatkar379@gmail.com` with a button: **"Activate Form"**.
+3. Simply click that button once to confirm your email. From that moment on, all student inquiries and admissions will land straight in your inbox automatically! No account or password required.
 
 ---
 

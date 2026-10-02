@@ -43,16 +43,14 @@
       <p class="enroll-subtitle">Fill in the details below and we will contact you to confirm your admission.</p>
 
       <!--
-        FORMSPREE SETUP:
-        1. Go to https://formspree.io and sign up (free).
-        2. Create a new form — it gives you a URL like https://formspree.io/f/xabcdefg
-        3. Replace YOUR_FORMSPREE_ID below with that ID (just the part after /f/).
-        Example: action="https://formspree.io/f/xabcdefg"
+        FormSubmit endpoint connected directly to nikhileshbhatkar379@gmail.com
       -->
-      <form id="enrollForm" action="https://formspree.io/f/YOUR_FORMSPREE_ID" method="POST" class="enroll-form">
+      <form id="enrollForm" action="https://formsubmit.co/ajax/nikhileshbhatkar379@gmail.com" method="POST" class="enroll-form">
 
-        <!-- Hidden field to identify this as an enrollment -->
-        <input type="hidden" name="_subject" value="New Enrollment — Nikhillesh Bhatkar Learning Academy">
+        <!-- FormSubmit configuration fields -->
+        <input type="hidden" name="_subject" value="New Student Enrollment / Demo Booking — Nikhillesh Bhatkar Learning Academy">
+        <input type="hidden" name="_template" value="table">
+        <input type="hidden" name="_captcha" value="false">
 
         <fieldset>
           <legend>Admission / Registration Type</legend>
@@ -177,23 +175,20 @@
       }
     });
 
-    // Enrollment form — handle submission
+    // Enrollment form — handle AJAX submission
     const enrollForm = document.getElementById('enrollForm');
     const enrollSuccess = document.getElementById('enrollSuccess');
 
     if (enrollForm) {
       enrollForm.addEventListener('submit', function(e) {
+        e.preventDefault();
         const action = enrollForm.getAttribute('action');
-
-        // If Formspree is not configured, prevent submit and show alert
-        if (action.includes('YOUR_FORMSPREE_ID')) {
-          e.preventDefault();
-          alert('Enrollment form is not yet connected to Formspree.\n\nTo set it up:\n1. Go to https://formspree.io\n2. Create a free form\n3. Replace YOUR_FORMSPREE_ID in enroll.html with your form ID.');
-          return;
+        const submitBtn = enrollForm.querySelector('button[type="submit"]');
+        if (submitBtn) {
+          submitBtn.disabled = true;
+          submitBtn.textContent = 'Submitting...';
         }
 
-        // If Formspree IS configured, use fetch to submit without page reload
-        e.preventDefault();
         const data = new FormData(enrollForm);
 
         fetch(action, {
@@ -203,14 +198,24 @@
         })
         .then(response => {
           if (response.ok) {
+            enrollForm.reset();
             enrollForm.style.display = 'none';
             enrollSuccess.style.display = 'block';
+            window.scrollTo({ top: enrollSuccess.offsetTop - 100, behavior: 'smooth' });
           } else {
-            alert('Something went wrong. Please try again or contact us directly.');
+            return response.json().then(json => {
+              throw new Error(json.message || 'Submission failed');
+            });
           }
         })
-        .catch(() => {
-          alert('Network error. Please check your connection and try again.');
+        .catch(err => {
+          alert('Submission note: If this is your first submission, please verify and activate FormSubmit via the link sent to your email (nikhileshbhatkar379@gmail.com).\n\nDetails: ' + (err.message || 'Please check your connection and try again.'));
+        })
+        .finally(() => {
+          if (submitBtn) {
+            submitBtn.disabled = false;
+            submitBtn.textContent = 'Submit Enrollment';
+          }
         });
       });
     }

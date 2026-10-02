@@ -38,31 +38,19 @@ document.addEventListener('DOMContentLoaded', () => {
   }
 });
 
-/* Contact form — Formspree submission */
+/* Contact form — FormSubmit AJAX submission */
 const contactForm = document.getElementById('contactForm');
 if (contactForm) {
   contactForm.addEventListener('submit', (e) => {
+    e.preventDefault();
     const action = contactForm.getAttribute('action');
-
-    // If Formspree not yet configured, show setup instructions
-    if (action.includes('YOUR_FORMSPREE_ID')) {
-      e.preventDefault();
-      alert(
-        'Contact form is not yet connected to Formspree.\n\n' +
-        'To set it up:\n' +
-        '1. Go to https://formspree.io\n' +
-        '2. Create a free account and a new form\n' +
-        '3. Replace YOUR_FORMSPREE_ID in index.html with your form ID.'
-      );
-      return;
+    const submitBtn = contactForm.querySelector('button[type="submit"]');
+    if (submitBtn) {
+      submitBtn.disabled = true;
+      submitBtn.textContent = 'Sending...';
     }
 
-    // Submit via fetch (no page reload)
-    e.preventDefault();
     const data = new FormData(contactForm);
-    const submitBtn = contactForm.querySelector('button[type="submit"]');
-    submitBtn.disabled = true;
-    submitBtn.textContent = 'Sending...';
 
     fetch(action, {
       method: 'POST',
@@ -76,15 +64,19 @@ if (contactForm) {
         const successMsg = document.getElementById('contactSuccess');
         if (successMsg) successMsg.style.display = 'block';
       } else {
-        alert('Something went wrong. Please try again or call us directly.');
+        return response.json().then(json => {
+          throw new Error(json.message || 'Submission failed');
+        });
       }
     })
-    .catch(() => {
-      alert('Network error. Please check your connection and try again.');
+    .catch((err) => {
+      alert('Submission note: If this is your first submission, please verify and activate FormSubmit via the link sent to your email (nikhileshbhatkar379@gmail.com).\n\nDetails: ' + (err.message || 'Please check your connection and try again.'));
     })
     .finally(() => {
-      submitBtn.disabled = false;
-      submitBtn.textContent = 'Send Message';
+      if (submitBtn) {
+        submitBtn.disabled = false;
+        submitBtn.textContent = 'Send Message';
+      }
     });
   });
 }
