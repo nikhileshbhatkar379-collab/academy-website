@@ -1,0 +1,214 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Portal Login — Nikhillesh Bhatkar Learning Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Student and Admin Portal Login for Nikhillesh Bhatkar Learning Academy.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="login-page-body">
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
+        <h1><a href="index.html" style="color:#fff;text-decoration:none;">Nikhillesh Bhatkar Learning Academy</a></h1>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#grades">Courses</a></li>
+          <li><a href="index.html#special-courses">Special Courses</a></li>
+          <li><a href="index.html#syllabus">Syllabus</a></li>
+          <li><a href="notes.html">Notes</a></li>
+          <li><a href="index.html#fees">Fees</a></li>
+          <li><a href="index.html#faculty">Faculty</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="enroll.html">Enroll</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main" class="login-main-wrapper">
+
+    <div class="login-card">
+      <div class="login-header">
+        <span class="login-icon">🔐</span>
+        <h2>Academy Portal Login</h2>
+        <p>Access your personalized learning portal or administration dashboard</p>
+      </div>
+
+      <!-- Role Selector Tabs -->
+      <div class="login-role-tabs" role="tablist">
+        <button class="role-tab active" id="tabStudent" role="tab" aria-selected="true" aria-controls="studentLoginForm">
+          👨‍🎓 Student Portal
+        </button>
+        <button class="role-tab" id="tabAdmin" role="tab" aria-selected="false" aria-controls="adminLoginForm">
+          ⚙️ Admin Dashboard
+        </button>
+      </div>
+
+      <!-- Error / Alert Banner -->
+      <div id="loginAlert" class="login-alert" style="display:none;"></div>
+
+      <!-- Student Login Form -->
+      <form id="studentLoginForm" class="login-form active" role="tabpanel" aria-labelledby="tabStudent">
+        <div class="form-group">
+          <label for="studentId">Student ID or Registered Phone Number</label>
+          <input type="text" id="studentId" name="student_id" placeholder="e.g. STU-1001 or 9822110044" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="studentPin">Student PIN / Password</label>
+          <input type="password" id="studentPin" name="student_pin" placeholder="Enter student PIN" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn-login-submit">Login to Student Portal →</button>
+      </form>
+
+      <!-- Admin Login Form -->
+      <form id="adminLoginForm" class="login-form" role="tabpanel" aria-labelledby="tabAdmin" style="display:none;">
+        <div class="form-group">
+          <label for="adminUsername">Admin Username or Email</label>
+          <input type="text" id="adminUsername" name="admin_username" placeholder="e.g. admin or nikhileshbhatkar379@gmail.com" required autocomplete="username">
+        </div>
+
+        <div class="form-group">
+          <label for="adminPassword">Admin Password</label>
+          <input type="password" id="adminPassword" name="admin_password" placeholder="Enter admin password" required autocomplete="current-password">
+        </div>
+
+        <button type="submit" class="btn-login-submit btn-admin-submit">Login to Admin Dashboard →</button>
+      </form>
+
+      <!-- Demo Quick-Fill Helper Box -->
+      <div class="demo-credentials-box">
+        <h4>⚡ One-Click Demo Credentials:</h4>
+        <div class="demo-btn-group">
+          <button type="button" class="btn-demo-fill" id="fillAdminDemo">
+            🔑 Fill Admin (admin / admin123)
+          </button>
+          <button type="button" class="btn-demo-fill" id="fillStudentDemo">
+            🎓 Fill Student (STU-1001 / student123)
+          </button>
+        </div>
+      </div>
+
+      <!-- Help & Links -->
+      <div class="login-footer-links">
+        <p>New Student? <a href="enroll.html">Enroll for Admission or Book Free Demo</a></p>
+        <p>Forgot password or need login help? <a href="https://wa.me/918380096494?text=Hello%20Sir%2C%20I%20need%20help%20with%20my%20Student%20Portal%20Login." target="_blank" rel="noopener noreferrer">Contact Academy Support on WhatsApp</a></p>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      // Check if user is already logged in
+      const currentUser = Auth.getCurrentUser();
+      if (currentUser) {
+        if (currentUser.role === 'admin') {
+          window.location.href = 'admin.html';
+          return;
+        } else if (currentUser.role === 'student') {
+          window.location.href = 'student.html';
+          return;
+        }
+      }
+
+      const tabStudent = document.getElementById('tabStudent');
+      const tabAdmin = document.getElementById('tabAdmin');
+      const studentForm = document.getElementById('studentLoginForm');
+      const adminForm = document.getElementById('adminLoginForm');
+      const loginAlert = document.getElementById('loginAlert');
+
+      function switchTab(role) {
+        loginAlert.style.display = 'none';
+        if (role === 'student') {
+          tabStudent.classList.add('active');
+          tabStudent.setAttribute('aria-selected', 'true');
+          tabAdmin.classList.remove('active');
+          tabAdmin.setAttribute('aria-selected', 'false');
+
+          studentForm.style.display = 'block';
+          adminForm.style.display = 'none';
+        } else {
+          tabAdmin.classList.add('active');
+          tabAdmin.setAttribute('aria-selected', 'true');
+          tabStudent.classList.remove('active');
+          tabStudent.setAttribute('aria-selected', 'false');
+
+          adminForm.style.display = 'block';
+          studentForm.style.display = 'none';
+        }
+      }
+
+      tabStudent.addEventListener('click', () => switchTab('student'));
+      tabAdmin.addEventListener('click', () => switchTab('admin'));
+
+      // Quick Fill Buttons
+      document.getElementById('fillAdminDemo').addEventListener('click', () => {
+        switchTab('admin');
+        document.getElementById('adminUsername').value = 'admin';
+        document.getElementById('adminPassword').value = 'admin123';
+      });
+
+      document.getElementById('fillStudentDemo').addEventListener('click', () => {
+        switchTab('student');
+        document.getElementById('studentId').value = 'STU-1001';
+        document.getElementById('studentPin').value = 'student123';
+      });
+
+      // Student Form Submit
+      studentForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        loginAlert.style.display = 'none';
+
+        const id = document.getElementById('studentId').value;
+        const pin = document.getElementById('studentPin').value;
+
+        const result = Auth.loginStudent(id, pin);
+        if (result.success) {
+          window.location.href = 'student.html';
+        } else {
+          loginAlert.textContent = '❌ ' + result.message;
+          loginAlert.style.display = 'block';
+        }
+      });
+
+      // Admin Form Submit
+      adminForm.addEventListener('submit', (e) => {
+        e.preventDefault();
+        loginAlert.style.display = 'none';
+
+        const username = document.getElementById('adminUsername').value;
+        const password = document.getElementById('adminPassword').value;
+
+        const result = Auth.loginAdmin(username, password);
+        if (result.success) {
+          window.location.href = 'admin.html';
+        } else {
+          loginAlert.textContent = '❌ ' + result.message;
+          loginAlert.style.display = 'block';
+        }
+      });
+    });
+  </script>
+</body>
+</html>

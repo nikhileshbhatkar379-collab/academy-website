@@ -1,0 +1,130 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Student Portal — Nikhillesh Bhatkar Learning Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Top Student Bar -->
+  <header class="admin-topbar student-topbar">
+    <div class="admin-topbar-left">
+      <img src="logo.png" alt="Academy Logo" class="topbar-logo" onerror="this.style.display='none'">
+      <h2>🏛️ Student Learning Portal</h2>
+    </div>
+    <div class="admin-topbar-right">
+      <span class="admin-user-badge">👨‍🎓 <strong id="studentDisplayName">Student</strong></span>
+      <a href="notes.html" class="btn-topbar-link" target="_blank">📚 All Public Notes</a>
+      <button class="btn-logout" id="studentLogoutBtn">Logout 🚪</button>
+    </div>
+  </header>
+
+  <main class="student-main-container">
+
+    <!-- Student Welcome Profile Banner -->
+    <section class="student-profile-card">
+      <div class="student-profile-details">
+        <div class="student-avatar-circle">🎓</div>
+        <div class="student-info-text">
+          <h2 id="studentWelcomeName">Welcome, Student!</h2>
+          <div class="student-meta-pills">
+            <span class="badge badge-standard" id="studentStandardBadge">Standard 10 (SSC)</span>
+            <span class="badge badge-id" id="studentIdBadge">ID: STU-1001</span>
+            <span class="badge" id="studentFeeBadge">Fee: Paid</span>
+          </div>
+        </div>
+      </div>
+      <div class="student-profile-contact">
+        <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20have%20a%20subject%20doubt." target="_blank" rel="noopener noreferrer" class="btn-doubt-wa">
+          💬 Ask Doubt to Nikhillesh Sir on WhatsApp
+        </a>
+      </div>
+    </section>
+
+    <!-- Student Dashboard Tabs -->
+    <div class="student-tabs-wrapper">
+      <div class="student-tab-controls" role="tablist">
+        <button class="student-tab-btn active" data-tab="tab-student-notes">📚 My Course Notes &amp; Formula Books</button>
+        <button class="student-tab-btn" data-tab="tab-student-notices">📢 Academy Announcements</button>
+        <button class="student-tab-btn" data-tab="tab-student-timetable">🗓️ Weekly Timetable &amp; Schedule</button>
+      </div>
+
+      <!-- ================= TAB 1: MY NOTES ================= -->
+      <div id="tab-student-notes" class="student-tab-panel active">
+        <div class="tab-header-flex">
+          <h3>📖 Study Materials for Your Class</h3>
+          <span id="studentNotesCount" class="notes-count-badge">Loading notes...</span>
+        </div>
+        <div class="notes-grid" id="studentNotesGrid">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 2: ANNOUNCEMENTS ================= -->
+      <div id="tab-student-notices" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>📢 Latest Academy Notices &amp; Exam Alerts</h3>
+        </div>
+        <div id="studentNoticesList" class="student-notices-container">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: TIMETABLE ================= -->
+      <div id="tab-student-timetable" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>🗓️ Weekly Regular Batch Schedule</h3>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table timetable-table">
+            <thead>
+              <tr>
+                <th>Day</th>
+                <th>Standard 8</th>
+                <th>Standard 9</th>
+                <th>Standard 10 (SSC)</th>
+                <th>Standard 12 (HSC)</th>
+              </tr>
+            </thead>
+            <tbody>
+              <tr>
+                <td><strong>Monday – Friday</strong></td>
+                <td>4:00 PM – 5:00 PM<br><small>Maths / Science</small></td>
+                <td>5:00 PM – 6:00 PM<br><small>Maths / Science</small></td>
+                <td>6:00 PM – 7:30 PM<br><small>Algebra / Geometry / Science</small></td>
+                <td>7:30 PM – 9:00 PM<br><small>Physics / Chemistry</small></td>
+              </tr>
+              <tr>
+                <td><strong>Saturday</strong></td>
+                <td>Revision &amp; Doubts</td>
+                <td>Revision &amp; Doubts</td>
+                <td>Numerical Practice &amp; Science Experiments</td>
+                <td>HSC Special Numericals (Amit Sir)</td>
+              </tr>
+              <tr>
+                <td><strong>Sunday</strong></td>
+                <td colspan="4" style="background:#fff8e7; text-align:center; font-weight:bold; color:#e67e22;">
+                  📝 Weekly Practice &amp; Chapter Revision Tests (9:00 AM – 12:00 PM)
+                </td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+    </div>
+
+  </main>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="student.js"></script>
+</body>
+</html>

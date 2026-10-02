@@ -1,0 +1,432 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Admin Dashboard — Nikhillesh Bhatkar Learning Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body class="dashboard-body">
+
+  <!-- Top Admin Bar -->
+  <header class="admin-topbar">
+    <div class="admin-topbar-left">
+      <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Sidebar">☰</button>
+      <h2>🏛️ Nikhillesh Bhatkar Learning Academy — Admin Panel</h2>
+    </div>
+    <div class="admin-topbar-right">
+      <span class="admin-user-badge">👤 <strong id="adminDisplayName">Nikhillesh Bhatkar</strong> (Admin)</span>
+      <a href="index.html" class="btn-topbar-link" target="_blank" title="View Public Website">🌐 View Website</a>
+      <button class="btn-logout" id="adminLogoutBtn">Logout 🚪</button>
+    </div>
+  </header>
+
+  <div class="admin-layout">
+
+    <!-- Sidebar Navigation -->
+    <aside class="admin-sidebar" id="adminSidebar">
+      <nav class="sidebar-nav">
+        <ul>
+          <li><button class="nav-item active" data-tab="tab-overview">📊 Dashboard Overview</button></li>
+          <li><button class="nav-item" data-tab="tab-students">👨‍🎓 Student Management</button></li>
+          <li><button class="nav-item" data-tab="tab-notes">📚 Notes &amp; Study Materials</button></li>
+          <li><button class="nav-item" data-tab="tab-notices">📢 Notice Board &amp; Alerts</button></li>
+          <li><button class="nav-item" data-tab="tab-inquiries">📥 Inquiries &amp; Demo Leads</button></li>
+          <li><button class="nav-item" data-tab="tab-settings">⚙️ Settings &amp; Backup</button></li>
+        </ul>
+      </nav>
+      <div class="sidebar-footer">
+        <p>Sangameshwar, Maharashtra</p>
+        <small>Academy Management v1.0</small>
+      </div>
+    </aside>
+
+    <!-- Main Content Area -->
+    <main class="admin-main">
+
+      <!-- ================= 1. OVERVIEW TAB ================= -->
+      <section id="tab-overview" class="admin-tab-content active">
+        <div class="section-title-row">
+          <h2>📊 Academy Overview &amp; Key Metrics</h2>
+          <div class="quick-actions">
+            <button class="btn-primary" id="quickAddStudentBtn">+ Add Student</button>
+            <button class="btn-primary" id="quickAddNoteBtn">+ Upload Note</button>
+            <button class="btn-primary" id="quickAddNoticeBtn">+ Post Notice</button>
+          </div>
+        </div>
+
+        <!-- Metric Cards -->
+        <div class="metric-grid">
+          <div class="metric-card">
+            <div class="metric-icon">👨‍🎓</div>
+            <div class="metric-info">
+              <span class="metric-label">Total Enrolled Students</span>
+              <h3 id="statTotalStudents">5</h3>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">📚</div>
+            <div class="metric-info">
+              <span class="metric-label">Study Notes &amp; Materials</span>
+              <h3 id="statTotalNotes">9</h3>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">📢</div>
+            <div class="metric-info">
+              <span class="metric-label">Active Announcements</span>
+              <h3 id="statTotalNotices">3</h3>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">📥</div>
+            <div class="metric-info">
+              <span class="metric-label">Pending Inquiries &amp; Demos</span>
+              <h3 id="statTotalInquiries">3</h3>
+            </div>
+          </div>
+        </div>
+
+        <!-- Recent Activity 2-Col Grid -->
+        <div class="dashboard-split-grid">
+          <!-- Recent Inquiries -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3>📥 Recent Admission Inquiries</h3>
+              <button class="btn-link" onclick="switchAdminTab('tab-inquiries')">View All →</button>
+            </div>
+            <div class="table-responsive">
+              <table class="dash-table">
+                <thead>
+                  <tr>
+                    <th>Student / Parent</th>
+                    <th>Type</th>
+                    <th>Standard</th>
+                    <th>Status</th>
+                  </tr>
+                </thead>
+                <tbody id="overviewInquiriesTable"></tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Active Announcements -->
+          <div class="dash-card">
+            <div class="dash-card-header">
+              <h3>📢 Active Notice Board</h3>
+              <button class="btn-link" onclick="switchAdminTab('tab-notices')">Manage Notices →</button>
+            </div>
+            <div id="overviewNoticesList" class="overview-notices-container"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 2. STUDENTS TAB ================= -->
+      <section id="tab-students" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>👨‍🎓 Student Directory &amp; Fees Management</h2>
+          <div class="action-btn-group">
+            <button class="btn-primary" id="openAddStudentModalBtn">+ Add New Student</button>
+            <button class="btn-secondary" id="exportStudentsCsvBtn">📥 Export CSV</button>
+          </div>
+        </div>
+
+        <!-- Student Filters -->
+        <div class="table-filter-bar">
+          <input type="text" id="studentSearchInput" placeholder="🔍 Search student by name, phone, or ID (e.g. Rahul, STU-1001)...">
+          <select id="studentStandardFilter">
+            <option value="all">All Standards</option>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Special: AI & Stock Market">Special Courses</option>
+          </select>
+          <select id="studentFeeFilter">
+            <option value="all">All Fee Status</option>
+            <option value="Paid">Fee Paid</option>
+            <option value="Pending">Fee Pending</option>
+          </select>
+        </div>
+
+        <!-- Students Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Standard</th>
+                <th>Phone</th>
+                <th>Parent Name</th>
+                <th>Fee Status</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="studentsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 3. NOTES TAB ================= -->
+      <section id="tab-notes" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📚 Study Notes &amp; Learning Materials Repository</h2>
+          <button class="btn-primary" id="openAddNoteModalBtn">+ Upload / Add New Note</button>
+        </div>
+
+        <!-- Notes Filter -->
+        <div class="table-filter-bar">
+          <input type="text" id="noteSearchInput" placeholder="🔍 Search notes by topic, chapter, or keyword...">
+          <select id="noteStandardFilter">
+            <option value="all">All Standards</option>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Special: Stock Market">Stock Market</option>
+            <option value="Special: AI & Generative AI">AI Mastery</option>
+          </select>
+        </div>
+
+        <!-- Notes Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title</th>
+                <th>Standard</th>
+                <th>Subject</th>
+                <th>Chapter</th>
+                <th>File Size</th>
+                <th>Date Added</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="notesTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 4. NOTICES TAB ================= -->
+      <section id="tab-notices" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📢 Notice Board &amp; Announcements Broadcast</h2>
+        </div>
+
+        <div class="dashboard-split-grid">
+          <!-- Create Notice Form -->
+          <div class="dash-card">
+            <h3>Post New Announcement</h3>
+            <form id="createNoticeForm" class="admin-form">
+              <div class="form-group">
+                <label for="noticeTitle">Notice Headline / Title <span class="required">*</span></label>
+                <input type="text" id="noticeTitle" placeholder="e.g. Special Revision Test for SSC Maths" required>
+              </div>
+              <div class="form-group">
+                <label for="noticeCategory">Category</label>
+                <select id="noticeCategory">
+                  <option value="Exam Alert">Exam Alert</option>
+                  <option value="Workshop">Special Workshop</option>
+                  <option value="Holiday">Holiday Announcement</option>
+                  <option value="General">General Announcement</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="noticeContent">Notice Details / Instructions <span class="required">*</span></label>
+                <textarea id="noticeContent" rows="4" placeholder="Enter detailed notice message for students..." required></textarea>
+              </div>
+              <button type="submit" class="btn-primary">📢 Publish Notice Now</button>
+            </form>
+          </div>
+
+          <!-- Active Notices List -->
+          <div class="dash-card">
+            <h3>Currently Active Notices</h3>
+            <div id="activeNoticesManagerList" class="active-notices-manager"></div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 5. INQUIRIES TAB ================= -->
+      <section id="tab-inquiries" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📥 Admission Inquiries &amp; Free Demo Class Bookings</h2>
+          <button class="btn-secondary" id="exportInquiriesCsvBtn">📥 Export Leads</button>
+        </div>
+
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Date</th>
+                <th>Name</th>
+                <th>Phone</th>
+                <th>Email</th>
+                <th>Standard / Course</th>
+                <th>Type</th>
+                <th>Status</th>
+                <th>Quick Actions</th>
+              </tr>
+            </thead>
+            <tbody id="inquiriesTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 6. SETTINGS TAB ================= -->
+      <section id="tab-settings" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>⚙️ Admin Settings &amp; Academy Data Management</h2>
+        </div>
+
+        <div class="dashboard-split-grid">
+          <!-- Password Change -->
+          <div class="dash-card">
+            <h3>Change Admin Password</h3>
+            <form id="changePasswordForm" class="admin-form">
+              <div class="form-group">
+                <label for="currentAdminPass">Current Password</label>
+                <input type="password" id="currentAdminPass" required>
+              </div>
+              <div class="form-group">
+                <label for="newAdminPass">New Password</label>
+                <input type="password" id="newAdminPass" placeholder="At least 6 characters" required>
+              </div>
+              <div class="form-group">
+                <label for="confirmAdminPass">Confirm New Password</label>
+                <input type="password" id="confirmAdminPass" required>
+              </div>
+              <button type="submit" class="btn-primary">Update Password</button>
+            </form>
+          </div>
+
+          <!-- Backup & Restore -->
+          <div class="dash-card">
+            <h3>Data Backup &amp; Recovery</h3>
+            <p>Export all students, notes, inquiries, and notices as a portable JSON file, or restore from a previous backup.</p>
+            <div class="backup-btn-stack">
+              <button class="btn-primary" id="downloadBackupBtn">💾 Download Complete Academy Backup (JSON)</button>
+              <div class="restore-box">
+                <label for="restoreFileInput"><strong>Restore Data from JSON File:</strong></label>
+                <input type="file" id="restoreFileInput" accept=".json">
+              </div>
+              <button class="btn-danger" id="resetDefaultDataBtn">⚠️ Reset to Demo Initial Data</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+    </main>
+  </div>
+
+  <!-- ================= MODALS ================= -->
+
+  <!-- Add / Edit Student Modal -->
+  <div id="studentModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="studentModalTitle">Add New Student</h3>
+        <button class="modal-close" onclick="closeStudentModal()">&times;</button>
+      </div>
+      <form id="studentModalForm" class="modal-form">
+        <input type="hidden" id="modalStudentId">
+        <div class="form-group">
+          <label for="modalStudentName">Student's Full Name <span class="required">*</span></label>
+          <input type="text" id="modalStudentName" placeholder="e.g. Tanmay Kadam" required>
+        </div>
+        <div class="form-group">
+          <label for="modalStudentStandard">Standard / Class <span class="required">*</span></label>
+          <select id="modalStudentStandard" required>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Special: Stock Market">Special: Stock Market</option>
+            <option value="Special: AI & Generative AI">Special: AI &amp; Generative AI</option>
+            <option value="Special: AI & Stock Market">Special: AI &amp; Stock Market</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modalStudentPhone">Student Phone Number <span class="required">*</span></label>
+          <input type="tel" id="modalStudentPhone" placeholder="10-digit number" pattern="[0-9]{10}" required>
+        </div>
+        <div class="form-group">
+          <label for="modalStudentPin">Student Portal PIN / Password <span class="required">*</span></label>
+          <input type="text" id="modalStudentPin" value="student123" required>
+        </div>
+        <div class="form-group">
+          <label for="modalParentName">Parent / Guardian Name <span class="required">*</span></label>
+          <input type="text" id="modalParentName" placeholder="e.g. Suresh Kadam" required>
+        </div>
+        <div class="form-group">
+          <label for="modalParentPhone">Parent Phone Number</label>
+          <input type="tel" id="modalParentPhone" placeholder="10-digit number">
+        </div>
+        <div class="form-group">
+          <label for="modalFeeStatus">Fee Payment Status</label>
+          <select id="modalFeeStatus">
+            <option value="Paid">Paid</option>
+            <option value="Pending">Pending</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Save Student</button>
+          <button type="button" class="btn-secondary" onclick="closeStudentModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add / Edit Note Modal -->
+  <div id="noteModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="noteModalTitle">Upload / Add Study Note</h3>
+        <button class="modal-close" onclick="closeNoteModal()">&times;</button>
+      </div>
+      <form id="noteModalForm" class="modal-form">
+        <div class="form-group">
+          <label for="modalNoteTitle">Note / Document Title <span class="required">*</span></label>
+          <input type="text" id="modalNoteTitle" placeholder="e.g. Class 10 Gravitation & Space Missions Complete Notes" required>
+        </div>
+        <div class="form-group">
+          <label for="modalNoteStandard">Standard / Class <span class="required">*</span></label>
+          <select id="modalNoteStandard" required>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Special: Stock Market">Special: Stock Market</option>
+            <option value="Special: AI & Generative AI">Special: AI &amp; Generative AI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modalNoteSubject">Subject <span class="required">*</span></label>
+          <input type="text" id="modalNoteSubject" placeholder="e.g. Science & Technology Part 1" required>
+        </div>
+        <div class="form-group">
+          <label for="modalNoteChapter">Chapter / Module <span class="required">*</span></label>
+          <input type="text" id="modalNoteChapter" placeholder="e.g. Chapter 1 & 10" required>
+        </div>
+        <div class="form-group">
+          <label for="modalNoteSize">File Size</label>
+          <input type="text" id="modalNoteSize" placeholder="e.g. 2.5 MB" value="2.0 MB">
+        </div>
+        <div class="form-group">
+          <label for="modalNoteDesc">Short Overview / Description <span class="required">*</span></label>
+          <textarea id="modalNoteDesc" rows="3" placeholder="Key topics covered, formulas included, and revision points..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Save Note Material</button>
+          <button type="button" class="btn-secondary" onclick="closeNoteModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="admin.js"></script>
+</body>
+</html>

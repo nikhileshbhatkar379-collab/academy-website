@@ -1,0 +1,245 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <title>Study Notes &amp; Learning Materials — Nikhillesh Bhatkar Learning Academy</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Download free study notes, formula sheets, and chapter summaries for Maharashtra State Board Classes 8, 9, 10 & 12, Stock Market, and AI courses.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <a href="#main" class="skip-link">Skip to main content</a>
+
+  <!-- Header -->
+  <header role="banner">
+    <div class="header-inner">
+      <div class="logo-area">
+        <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
+        <h1><a href="index.html" style="color:#fff;text-decoration:none;">Nikhillesh Bhatkar Learning Academy</a></h1>
+      </div>
+      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <nav role="navigation" aria-label="Main navigation">
+        <ul>
+          <li><a href="index.html#about">About</a></li>
+          <li><a href="index.html#grades">Courses</a></li>
+          <li><a href="index.html#special-courses">Special Courses</a></li>
+          <li><a href="index.html#syllabus">Syllabus</a></li>
+          <li><a href="index.html#fees">Fees</a></li>
+          <li><a href="index.html#faculty">Faculty</a></li>
+          <li><a href="notes.html" class="nav-active">Notes</a></li>
+          <li><a href="index.html#contact">Contact</a></li>
+          <li><a href="enroll.html">Enroll</a></li>
+          <li><a href="login.html" class="nav-portal-btn">🔐 Portal Login</a></li>
+        </ul>
+      </nav>
+    </div>
+  </header>
+
+  <main id="main">
+
+    <!-- Notes Hero -->
+    <section class="notes-hero" role="region" aria-label="Notes Banner">
+      <div class="notes-hero-content">
+        <span class="notes-badge">📚 Free &amp; Enrolled Learning Resources</span>
+        <h2>Study Notes, Formula Sheets &amp; Revision Guides</h2>
+        <p>Comprehensive, chapter-wise learning materials curated by Nikhillesh Bhatkar &amp; Amit Pawaskar for Maharashtra State Board &amp; Skill Development Courses.</p>
+
+        <!-- Search and Filter Bar -->
+        <div class="notes-search-box">
+          <input type="text" id="notesSearchInput" placeholder="🔍 Search notes by topic, chapter, or keyword (e.g. Gravitation, Pythagoras, Thermodynamics)..." aria-label="Search study notes">
+        </div>
+      </div>
+    </section>
+
+    <!-- Notes Section -->
+    <section class="content-section notes-container">
+
+      <!-- Standard / Category Filter Controls -->
+      <div class="notes-filter-bar">
+        <div class="filter-group">
+          <span class="filter-label">Filter by Standard:</span>
+          <div class="filter-pills" id="standardFilterPills">
+            <button class="filter-pill active" data-filter="all">All Standards</button>
+            <button class="filter-pill" data-filter="Standard 8">Class 8</button>
+            <button class="filter-pill" data-filter="Standard 9">Class 9</button>
+            <button class="filter-pill" data-filter="Standard 10 (SSC)">Class 10 (SSC)</button>
+            <button class="filter-pill" data-filter="Standard 12 (HSC)">Class 12 (HSC)</button>
+            <button class="filter-pill" data-filter="Special: Stock Market">Stock Market</button>
+            <button class="filter-pill" data-filter="Special: AI & Generative AI">AI Mastery</button>
+          </div>
+        </div>
+      </div>
+
+      <!-- Notes Count & Status -->
+      <div class="notes-status-bar">
+        <span id="notesCountText">Showing all study materials</span>
+        <a href="login.html" class="student-portal-link">✨ Enrolled Student? Login to Access Full Test Papers &amp; Solution Banks →</a>
+      </div>
+
+      <!-- Notes Cards Grid -->
+      <div class="notes-grid" id="notesGrid">
+        <!-- Injected dynamically via script below -->
+      </div>
+
+      <!-- Empty State -->
+      <div id="noNotesFound" class="no-notes-box" style="display:none;">
+        <p>🔍 No study materials matched your search query or filter.</p>
+        <button id="btnResetNotesFilter" class="btn-secondary" style="margin-top:1rem;">Reset All Filters</button>
+      </div>
+
+      <!-- Enrolled Portal Banner -->
+      <div class="portal-cta-banner">
+        <div class="portal-cta-content">
+          <h3>Are You an Enrolled Student at Nikhillesh Bhatkar Learning Academy?</h3>
+          <p>Log in to your Student Portal to access personalized homework assignments, model answer keys, timetable updates, and direct doubt discussions with your teachers.</p>
+        </div>
+        <div class="portal-cta-actions">
+          <a href="login.html" class="btn-portal-cta">Student Login</a>
+          <a href="enroll.html" class="btn-enroll-cta">Enroll Today</a>
+        </div>
+      </div>
+
+    </section>
+
+  </main>
+
+  <!-- Floating WhatsApp Chat Button -->
+  <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20have%20a%20doubt%20about%20the%20study%20notes." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+    <svg class="whatsapp-icon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
+      <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.4 1.26-1.95 1.34-.51.08-1.17.11-3.77-.96-3.13-1.29-5.14-4.47-5.3-4.68-.16-.21-1.27-1.69-1.27-3.23 0-1.54.81-2.29 1.1-2.6.29-.31.63-.39.84-.39.21 0 .42.01.6.02.19.01.45-.07.7.54.26.62.89 2.16.97 2.32.08.16.13.35.03.56-.11.21-.16.34-.32.53-.16.19-.34.42-.48.56-.16.16-.33.33-.14.65.19.32.84 1.38 1.8 2.24 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.81-.94 1.02-1.26.21-.32.42-.27.7-.16.29.11 1.83.86 2.14 1.02.32.16.53.24.6.37.08.13.08.77-.16 1.45z"/>
+    </svg>
+    <span class="whatsapp-tooltip">Ask Doubt on WhatsApp</span>
+  </a>
+
+  <!-- Footer -->
+  <footer role="contentinfo">
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+  </footer>
+
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="script.js"></script>
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      let currentFilter = 'all';
+      let searchQuery = '';
+
+      const notesGrid = document.getElementById('notesGrid');
+      const noNotesFound = document.getElementById('noNotesFound');
+      const searchInput = document.getElementById('notesSearchInput');
+      const filterPills = document.querySelectorAll('#standardFilterPills .filter-pill');
+      const countText = document.getElementById('notesCountText');
+
+      function renderNotes() {
+        const allNotes = AcademyDB.getNotes();
+        const filtered = allNotes.filter(note => {
+          const matchFilter = (currentFilter === 'all') || (note.standard === currentFilter);
+          const matchSearch = !searchQuery || (
+            note.title.toLowerCase().includes(searchQuery) ||
+            note.subject.toLowerCase().includes(searchQuery) ||
+            note.chapter.toLowerCase().includes(searchQuery) ||
+            note.description.toLowerCase().includes(searchQuery) ||
+            note.standard.toLowerCase().includes(searchQuery)
+          );
+          return matchFilter && matchSearch;
+        });
+
+        countText.textContent = `Showing ${filtered.length} study material${filtered.length === 1 ? '' : 's'}`;
+
+        if (filtered.length === 0) {
+          notesGrid.innerHTML = '';
+          noNotesFound.style.display = 'block';
+          return;
+        }
+
+        noNotesFound.style.display = 'none';
+        notesGrid.innerHTML = filtered.map(note => {
+          // Determine badge color class
+          let tagClass = 'math-tag';
+          if (note.subject.toLowerCase().includes('science')) tagClass = 'science-tag';
+          if (note.subject.toLowerCase().includes('physics')) tagClass = 'physics-tag';
+          if (note.subject.toLowerCase().includes('chemistry')) tagClass = 'chemistry-tag';
+          if (note.subject.toLowerCase().includes('financial') || note.subject.toLowerCase().includes('stock')) tagClass = 'stock-tag';
+          if (note.subject.toLowerCase().includes('artificial') || note.subject.toLowerCase().includes('ai')) tagClass = 'ai-tag';
+
+          return `
+            <article class="note-card">
+              <div class="note-card-header">
+                <span class="note-standard-tag">${note.standard}</span>
+                <span class="note-subject-tag ${tagClass}">${note.subject}</span>
+              </div>
+              <h3 class="note-title">${note.title}</h3>
+              <p class="note-chapter">📖 <strong>${note.chapter}</strong></p>
+              <p class="note-desc">${note.description}</p>
+              <div class="note-meta">
+                <span>📄 Format: <strong>${note.fileType || 'PDF'}</strong></span>
+                <span>📦 Size: <strong>${note.size || '2.0 MB'}</strong></span>
+                <span>📅 ${note.date || 'Updated recently'}</span>
+              </div>
+              <div class="note-actions">
+                <button class="btn-download-note" onclick="downloadSampleNote('${note.id}', '${encodeURIComponent(note.title)}')">
+                  ⬇️ Download Note PDF
+                </button>
+                <button class="btn-preview-note" onclick="previewNoteContent('${note.id}')">
+                  👁️ Quick Preview
+                </button>
+              </div>
+            </article>
+          `;
+        }).join('');
+      }
+
+      // Filter Pill Clicks
+      filterPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          filterPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentFilter = pill.getAttribute('data-filter');
+          renderNotes();
+        });
+      });
+
+      // Search Input
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.trim().toLowerCase();
+          renderNotes();
+        });
+      }
+
+      // Reset Button
+      const btnReset = document.getElementById('btnResetNotesFilter');
+      if (btnReset) {
+        btnReset.addEventListener('click', () => {
+          currentFilter = 'all';
+          searchQuery = '';
+          if (searchInput) searchInput.value = '';
+          filterPills.forEach(p => {
+            if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
+            else p.classList.remove('active');
+          });
+          renderNotes();
+        });
+      }
+
+      // Initial Render
+      renderNotes();
+    });
+
+    // Helper functions for Note downloads & previews
+    function downloadSampleNote(noteId, title) {
+      const decodedTitle = decodeURIComponent(title);
+      alert(`📥 Downloading: "${decodedTitle}"\n\nNikhillesh Bhatkar Learning Academy study material is ready.`);
+    }
+
+    function previewNoteContent(noteId) {
+      const allNotes = AcademyDB.getNotes();
+      const note = allNotes.find(n => n.id === noteId);
+      if (note) {
+        alert(`📖 Note Preview:\n\n${note.title}\nStandard: ${note.standard}\nSubject: ${note.subject}\nChapter: ${note.chapter}\n\nOverview:\n${note.description}\n\nFull PDF content available for enrolled academy students.`);
+      }
+    }
+  </script>
+</body>
+</html>
