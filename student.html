@@ -15,9 +15,15 @@
       <h2>🏛️ Student Learning Portal</h2>
     </div>
     <div class="admin-topbar-right">
+      <!-- Multi-Language Switcher -->
+      <div class="lang-switcher">
+        <button class="lang-btn active" data-lang="en" title="English">EN</button>
+        <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
+        <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
+      </div>
       <span class="admin-user-badge">👨‍🎓 <strong id="studentDisplayName">Student</strong></span>
-      <a href="notes.html" class="btn-topbar-link" target="_blank">📚 All Public Notes</a>
-      <button class="btn-logout" id="studentLogoutBtn">Logout 🚪</button>
+      <a href="notes.html" class="btn-topbar-link" target="_blank" data-i18n="nav_notes">📚 Notes</a>
+      <button class="btn-logout" id="studentLogoutBtn" data-i18n="btn_logout">Logout 🚪</button>
     </div>
   </header>
 
@@ -120,11 +126,13 @@
 
   <!-- Footer -->
   <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
   <!-- Scripts -->
   <script src="auth.js"></script>
+  <script src="i18n.js"></script>
+  <script src="chatbot.js"></script>
   <script src="student.js"></script>
 </body>
 </html>

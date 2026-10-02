@@ -18,19 +18,27 @@
         <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
         <h1><a href="index.html" style="color:#fff;text-decoration:none;">Nikhillesh Bhatkar Learning Academy</a></h1>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <div class="header-right-actions">
+        <!-- Multi-Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
+          <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      </div>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#grades">Courses</a></li>
-          <li><a href="index.html#special-courses">Special Courses</a></li>
-          <li><a href="index.html#syllabus">Syllabus</a></li>
-          <li><a href="index.html#fees">Fees</a></li>
-          <li><a href="index.html#faculty">Faculty</a></li>
-          <li><a href="notes.html" class="nav-active">Notes</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="enroll.html">Enroll</a></li>
-          <li><a href="login.html" class="nav-portal-btn">🔐 Portal Login</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#grades" data-i18n="nav_courses">Courses</a></li>
+          <li><a href="index.html#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
+          <li><a href="index.html#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
+          <li><a href="index.html#fees" data-i18n="nav_fees">Fees</a></li>
+          <li><a href="index.html#faculty" data-i18n="nav_faculty">Faculty</a></li>
+          <li><a href="notes.html" class="nav-active" data-i18n="nav_notes">Notes</a></li>
+          <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+          <li><a href="enroll.html" data-i18n="nav_enroll">Enroll</a></li>
+          <li><a href="login.html" class="nav-portal-btn" data-i18n="nav_login">🔐 Portal Login</a></li>
         </ul>
       </nav>
     </div>
@@ -41,13 +49,13 @@
     <!-- Notes Hero -->
     <section class="notes-hero" role="region" aria-label="Notes Banner">
       <div class="notes-hero-content">
-        <span class="notes-badge">📚 Free &amp; Enrolled Learning Resources</span>
-        <h2>Study Notes, Formula Sheets &amp; Revision Guides</h2>
-        <p>Comprehensive, chapter-wise learning materials curated by Nikhillesh Bhatkar &amp; Amit Pawaskar for Maharashtra State Board &amp; Skill Development Courses.</p>
+        <span class="notes-badge" data-i18n="notes_hero_badge">📚 Free &amp; Enrolled Learning Resources</span>
+        <h2 data-i18n="notes_hero_title">Study Notes, Formula Sheets &amp; Revision Guides</h2>
+        <p data-i18n="notes_hero_sub">Chapter-wise PDF summaries, formula books, and revision materials for Maharashtra State Board &amp; Special Skill Courses.</p>
 
         <!-- Search and Filter Bar -->
         <div class="notes-search-box">
-          <input type="text" id="notesSearchInput" placeholder="🔍 Search notes by topic, chapter, or keyword (e.g. Gravitation, Pythagoras, Thermodynamics)..." aria-label="Search study notes">
+          <input type="text" id="notesSearchInput" data-i18n-placeholder="notes_search_placeholder" placeholder="🔍 Search notes by chapter name, concept keyword, or subject..." aria-label="Search study notes">
         </div>
       </div>
     </section>
@@ -58,15 +66,15 @@
       <!-- Standard / Category Filter Controls -->
       <div class="notes-filter-bar">
         <div class="filter-group">
-          <span class="filter-label">Filter by Standard:</span>
+          <span class="filter-label">Filter:</span>
           <div class="filter-pills" id="standardFilterPills">
-            <button class="filter-pill active" data-filter="all">All Standards</button>
-            <button class="filter-pill" data-filter="Standard 8">Class 8</button>
-            <button class="filter-pill" data-filter="Standard 9">Class 9</button>
-            <button class="filter-pill" data-filter="Standard 10 (SSC)">Class 10 (SSC)</button>
-            <button class="filter-pill" data-filter="Standard 12 (HSC)">Class 12 (HSC)</button>
-            <button class="filter-pill" data-filter="Special: Stock Market">Stock Market</button>
-            <button class="filter-pill" data-filter="Special: AI & Generative AI">AI Mastery</button>
+            <button class="filter-pill active" data-filter="all" data-i18n="notes_filter_all">All Standards</button>
+            <button class="filter-pill" data-filter="Standard 8" data-i18n="notes_filter_8">Class 8</button>
+            <button class="filter-pill" data-filter="Standard 9" data-i18n="notes_filter_9">Class 9</button>
+            <button class="filter-pill" data-filter="Standard 10 (SSC)" data-i18n="notes_filter_10">Class 10 (SSC)</button>
+            <button class="filter-pill" data-filter="Standard 12 (HSC)" data-i18n="notes_filter_12">Class 12 (HSC)</button>
+            <button class="filter-pill" data-filter="Special: Stock Market" data-i18n="notes_filter_stock">📈 Stock Market</button>
+            <button class="filter-pill" data-filter="Special: AI & Generative AI" data-i18n="notes_filter_ai">🤖 AI Mastery</button>
           </div>
         </div>
       </div>
@@ -91,12 +99,12 @@
       <!-- Enrolled Portal Banner -->
       <div class="portal-cta-banner">
         <div class="portal-cta-content">
-          <h3>Are You an Enrolled Student at Nikhillesh Bhatkar Learning Academy?</h3>
-          <p>Log in to your Student Portal to access personalized homework assignments, model answer keys, timetable updates, and direct doubt discussions with your teachers.</p>
+          <h3 data-i18n="notes_cta_title">Are you an enrolled academy student?</h3>
+          <p data-i18n="notes_cta_desc">Log in to the Student Portal to access full question banks, class-specific test papers, and model board solutions.</p>
         </div>
         <div class="portal-cta-actions">
-          <a href="login.html" class="btn-portal-cta">Student Login</a>
-          <a href="enroll.html" class="btn-enroll-cta">Enroll Today</a>
+          <a href="login.html" class="btn-portal-cta" data-i18n="notes_cta_btn">Go to Student Portal Login →</a>
+          <a href="enroll.html" class="btn-enroll-cta" data-i18n="nav_enroll">Enroll Today</a>
         </div>
       </div>
 
@@ -114,11 +122,13 @@
 
   <!-- Footer -->
   <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
   <!-- Scripts -->
   <script src="auth.js"></script>
+  <script src="i18n.js"></script>
+  <script src="chatbot.js"></script>
   <script src="script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
@@ -190,7 +200,15 @@
         }).join('');
       }
 
-      // Filter Pill Clicks
+      // Search Handler
+      if (searchInput) {
+        searchInput.addEventListener('input', (e) => {
+          searchQuery = e.target.value.toLowerCase().trim();
+          renderNotes();
+        });
+      }
+
+      // Filter Handler
       filterPills.forEach(pill => {
         pill.addEventListener('click', () => {
           filterPills.forEach(p => p.classList.remove('active'));
@@ -199,14 +217,6 @@
           renderNotes();
         });
       });
-
-      // Search Input
-      if (searchInput) {
-        searchInput.addEventListener('input', (e) => {
-          searchQuery = e.target.value.trim().toLowerCase();
-          renderNotes();
-        });
-      }
 
       // Reset Button
       const btnReset = document.getElementById('btnResetNotesFilter');

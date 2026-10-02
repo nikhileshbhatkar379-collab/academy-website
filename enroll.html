@@ -18,20 +18,28 @@
         <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
         <h1><a href="index.html" style="color:#fff;text-decoration:none;">Nikhillesh Bhatkar Learning Academy</a></h1>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <div class="header-right-actions">
+        <!-- Multi-Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
+          <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      </div>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#grades">Courses</a></li>
-          <li><a href="index.html#special-courses">Special Courses</a></li>
-          <li><a href="index.html#syllabus">Syllabus</a></li>
-          <li><a href="index.html#fees">Fees</a></li>
-          <li><a href="index.html#faculty">Faculty</a></li>
-          <li><a href="index.html#testimonials">Testimonials</a></li>
-          <li><a href="notes.html">Notes</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="enroll.html" class="nav-active">Enroll</a></li>
-          <li><a href="login.html" class="nav-portal-btn">🔐 Portal Login</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#grades" data-i18n="nav_courses">Courses</a></li>
+          <li><a href="index.html#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
+          <li><a href="index.html#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
+          <li><a href="index.html#fees" data-i18n="nav_fees">Fees</a></li>
+          <li><a href="index.html#faculty" data-i18n="nav_faculty">Faculty</a></li>
+          <li><a href="index.html#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+          <li><a href="notes.html" data-i18n="nav_notes">Notes</a></li>
+          <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+          <li><a href="enroll.html" class="nav-active" data-i18n="nav_enroll">Enroll</a></li>
+          <li><a href="login.html" class="nav-portal-btn" data-i18n="nav_login">🔐 Portal Login</a></li>
         </ul>
       </nav>
     </div>
@@ -40,8 +48,8 @@
   <main id="main">
 
     <section class="content-section enroll-section">
-      <h2>Student Enrollment Form</h2>
-      <p class="enroll-subtitle">Fill in the details below and we will contact you to confirm your admission.</p>
+      <h2 data-i18n="enroll_title">Student Enrollment Form</h2>
+      <p class="enroll-subtitle" data-i18n="enroll_subtitle">Fill in the details below and we will contact you to confirm your admission.</p>
 
       <!--
         FormSubmit endpoint connected directly to nikhileshbhatkar379@gmail.com
@@ -54,29 +62,29 @@
         <input type="hidden" name="_captcha" value="false">
 
         <fieldset>
-          <legend>Admission / Registration Type</legend>
+          <legend data-i18n="enroll_leg_type">Admission / Registration Type</legend>
           <div class="admission-type-group">
             <label class="radio-label">
               <input type="radio" name="admission_type" value="Full Admission" checked>
-              <strong>Regular Admission</strong> (Enroll for full academic session)
+              <strong data-i18n="enroll_reg_adm">Regular Admission (Enroll for full academic session)</strong>
             </label>
             <label class="radio-label demo-highlight">
               <input type="radio" name="admission_type" value="Free 2-Day Demo Class" id="radioDemo">
-              <strong>🎯 Book a Free 2-Day Demo Class</strong> (Experience our teaching first)
+              <strong data-i18n="enroll_demo_adm">🎯 Book a Free 2-Day Demo Class (Experience our teaching first)</strong>
             </label>
           </div>
         </fieldset>
 
         <fieldset>
-          <legend>Student Information</legend>
+          <legend data-i18n="enroll_leg_student">Student Information</legend>
 
-          <label for="studentName">Student's Full Name <span class="required">*</span></label>
+          <label for="studentName"><span data-i18n="enroll_lbl_name">Student's Full Name</span> <span class="required">*</span></label>
           <input type="text" id="studentName" name="student_name" placeholder="Enter student's full name" required aria-required="true">
 
-          <label for="dob">Date of Birth <span class="required">*</span></label>
+          <label for="dob"><span data-i18n="enroll_lbl_dob">Date of Birth</span> <span class="required">*</span></label>
           <input type="date" id="dob" name="date_of_birth" required aria-required="true">
 
-          <label for="gender">Gender <span class="required">*</span></label>
+          <label for="gender"><span data-i18n="enroll_lbl_gender">Gender</span> <span class="required">*</span></label>
           <select id="gender" name="gender" required aria-required="true">
             <option value="" disabled selected>Select gender</option>
             <option value="Male">Male</option>
@@ -84,7 +92,7 @@
             <option value="Other">Other</option>
           </select>
 
-          <label for="classSelect">Course / Class to Enroll In <span class="required">*</span></label>
+          <label for="classSelect"><span data-i18n="enroll_lbl_course">Course / Class to Enroll In</span> <span class="required">*</span></label>
           <select id="classSelect" name="class" required aria-required="true">
             <option value="" disabled selected>Select course / class</option>
             <optgroup label="Academic Courses (Maharashtra State Board)">
@@ -99,30 +107,30 @@
             </optgroup>
           </select>
 
-          <label for="previousSchool">Previous School / College</label>
+          <label for="previousSchool" data-i18n="enroll_lbl_school">Previous School / College</label>
           <input type="text" id="previousSchool" name="previous_school" placeholder="Enter school or college name">
         </fieldset>
 
         <fieldset>
-          <legend>Parent / Guardian Details</legend>
+          <legend data-i18n="enroll_leg_parent">Parent / Guardian Details</legend>
 
-          <label for="parentName">Parent / Guardian Name <span class="required">*</span></label>
+          <label for="parentName"><span data-i18n="enroll_lbl_pname">Parent / Guardian Name</span> <span class="required">*</span></label>
           <input type="text" id="parentName" name="parent_name" placeholder="Enter parent or guardian name" required aria-required="true">
 
-          <label for="parentPhone">Phone Number <span class="required">*</span></label>
+          <label for="parentPhone"><span data-i18n="enroll_lbl_phone">Phone Number</span> <span class="required">*</span></label>
           <input type="tel" id="parentPhone" name="parent_phone" placeholder="e.g. 8380096494" pattern="[0-9]{10}" title="Enter a 10-digit phone number" required aria-required="true">
 
-          <label for="parentEmail">Email Address</label>
+          <label for="parentEmail" data-i18n="enroll_lbl_email">Email Address</label>
           <input type="email" id="parentEmail" name="parent_email" placeholder="e.g. parent@email.com">
 
-          <label for="address">Home Address <span class="required">*</span></label>
+          <label for="address"><span data-i18n="enroll_lbl_address">Home Address</span> <span class="required">*</span></label>
           <textarea id="address" name="address" rows="3" placeholder="Enter full address with pincode" required aria-required="true"></textarea>
         </fieldset>
 
         <fieldset>
-          <legend>Additional Information</legend>
+          <legend data-i18n="enroll_leg_extra">Additional Information</legend>
 
-          <label for="howHeard">How did you hear about us?</label>
+          <label for="howHeard" data-i18n="enroll_lbl_source">How did you hear about us?</label>
           <select id="howHeard" name="how_heard">
             <option value="" disabled selected>Select an option</option>
             <option value="Friend / Family">Friend / Family</option>
@@ -132,13 +140,13 @@
             <option value="Other">Other</option>
           </select>
 
-          <label for="remarks">Any remarks or questions?</label>
+          <label for="remarks" data-i18n="enroll_lbl_remarks">Any remarks or questions?</label>
           <textarea id="remarks" name="remarks" rows="3" placeholder="Optional"></textarea>
         </fieldset>
 
         <div class="form-actions">
-          <button type="submit" class="btn-enroll">Submit Enrollment</button>
-          <button type="reset" class="btn-reset">Clear Form</button>
+          <button type="submit" class="btn-enroll" data-i18n="enroll_btn_submit">Submit Enrollment</button>
+          <button type="reset" class="btn-reset" data-i18n="enroll_btn_clear">Clear Form</button>
         </div>
 
       </form>
@@ -162,9 +170,13 @@
   </a>
 
   <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
+  <!-- Scripts -->
+  <script src="auth.js"></script>
+  <script src="i18n.js"></script>
+  <script src="chatbot.js"></script>
   <script src="script.js"></script>
   <script>
     // Auto-select Demo option if ?type=demo is in URL

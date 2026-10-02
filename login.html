@@ -18,18 +18,26 @@
         <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
         <h1><a href="index.html" style="color:#fff;text-decoration:none;">Nikhillesh Bhatkar Learning Academy</a></h1>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <div class="header-right-actions">
+        <!-- Multi-Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
+          <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      </div>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="index.html#about">About</a></li>
-          <li><a href="index.html#grades">Courses</a></li>
-          <li><a href="index.html#special-courses">Special Courses</a></li>
-          <li><a href="index.html#syllabus">Syllabus</a></li>
-          <li><a href="notes.html">Notes</a></li>
-          <li><a href="index.html#fees">Fees</a></li>
-          <li><a href="index.html#faculty">Faculty</a></li>
-          <li><a href="index.html#contact">Contact</a></li>
-          <li><a href="enroll.html">Enroll</a></li>
+          <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#grades" data-i18n="nav_courses">Courses</a></li>
+          <li><a href="index.html#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
+          <li><a href="index.html#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
+          <li><a href="notes.html" data-i18n="nav_notes">Notes</a></li>
+          <li><a href="index.html#fees" data-i18n="nav_fees">Fees</a></li>
+          <li><a href="index.html#faculty" data-i18n="nav_faculty">Faculty</a></li>
+          <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
+          <li><a href="enroll.html" data-i18n="nav_enroll">Enroll</a></li>
         </ul>
       </nav>
     </div>
@@ -46,10 +54,10 @@
 
       <!-- Role Selector Tabs -->
       <div class="login-role-tabs" role="tablist">
-        <button class="role-tab active" id="tabStudent" role="tab" aria-selected="true" aria-controls="studentLoginForm">
-          👨‍🎓 Student Portal
+        <button class="role-tab active" id="tabStudent" role="tab" aria-selected="true" aria-controls="studentLoginForm" data-i18n="login_tab_student">
+          🎓 Student Portal
         </button>
-        <button class="role-tab" id="tabAdmin" role="tab" aria-selected="false" aria-controls="adminLoginForm">
+        <button class="role-tab" id="tabAdmin" role="tab" aria-selected="false" aria-controls="adminLoginForm" data-i18n="login_tab_admin">
           ⚙️ Admin Dashboard
         </button>
       </div>
@@ -60,36 +68,36 @@
       <!-- Student Login Form -->
       <form id="studentLoginForm" class="login-form active" role="tabpanel" aria-labelledby="tabStudent">
         <div class="form-group">
-          <label for="studentId">Student ID or Registered Phone Number</label>
+          <label for="studentId" data-i18n="login_lbl_stuid">Student ID or Registered Phone Number</label>
           <input type="text" id="studentId" name="student_id" placeholder="e.g. STU-1001 or 9822110044" required autocomplete="username">
         </div>
 
         <div class="form-group">
-          <label for="studentPin">Student PIN / Password</label>
+          <label for="studentPin" data-i18n="login_lbl_stupin">Student PIN / Password</label>
           <input type="password" id="studentPin" name="student_pin" placeholder="Enter student PIN" required autocomplete="current-password">
         </div>
 
-        <button type="submit" class="btn-login-submit">Login to Student Portal →</button>
+        <button type="submit" class="btn-login-submit" data-i18n="login_btn_student">Login to Student Portal →</button>
       </form>
 
       <!-- Admin Login Form -->
       <form id="adminLoginForm" class="login-form" role="tabpanel" aria-labelledby="tabAdmin" style="display:none;">
         <div class="form-group">
-          <label for="adminUsername">Admin Username or Email</label>
+          <label for="adminUsername" data-i18n="login_lbl_admuser">Admin Username or Email</label>
           <input type="text" id="adminUsername" name="admin_username" placeholder="e.g. admin or nikhileshbhatkar379@gmail.com" required autocomplete="username">
         </div>
 
         <div class="form-group">
-          <label for="adminPassword">Admin Password</label>
+          <label for="adminPassword" data-i18n="login_lbl_admpass">Admin Password</label>
           <input type="password" id="adminPassword" name="admin_password" placeholder="Enter admin password" required autocomplete="current-password">
         </div>
 
-        <button type="submit" class="btn-login-submit btn-admin-submit">Login to Admin Dashboard →</button>
+        <button type="submit" class="btn-login-submit btn-admin-submit" data-i18n="login_btn_admin">Login to Admin Dashboard →</button>
       </form>
 
       <!-- Demo Quick-Fill Helper Box -->
       <div class="demo-credentials-box">
-        <h4>⚡ One-Click Demo Credentials:</h4>
+        <h4 data-i18n="login_demo_title">⚡ Quick Demo Credentials (Click to Auto-fill):</h4>
         <div class="demo-btn-group">
           <button type="button" class="btn-demo-fill" id="fillAdminDemo">
             🔑 Fill Admin (admin / admin123)
@@ -112,11 +120,13 @@
 
   <!-- Footer -->
   <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
   <!-- Scripts -->
   <script src="auth.js"></script>
+  <script src="i18n.js"></script>
+  <script src="chatbot.js"></script>
   <script src="script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {

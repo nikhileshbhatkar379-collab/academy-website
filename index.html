@@ -34,21 +34,29 @@
         <img src="logo.png" alt="Nikhillesh Bhatkar Learning Academy logo" class="logo-img" onerror="this.style.display='none'">
         <h1>Nikhillesh Bhatkar Learning Academy</h1>
       </div>
-      <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      <div class="header-right-actions">
+        <!-- Multi-Language Switcher -->
+        <div class="lang-switcher">
+          <button class="lang-btn active" data-lang="en" title="English">EN</button>
+          <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
+          <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
+        </div>
+        <button class="menu-toggle" aria-label="Toggle navigation menu" aria-expanded="false">&#9776;</button>
+      </div>
       <nav role="navigation" aria-label="Main navigation">
         <ul>
-          <li><a href="#about">About</a></li>
-          <li><a href="#grades">Courses</a></li>
-          <li><a href="#special-courses">Special Courses</a></li>
-          <li><a href="#syllabus">Syllabus</a></li>
-          <li><a href="#fees">Fees</a></li>
-          <li><a href="#faculty">Faculty</a></li>
-          <li><a href="#testimonials">Testimonials</a></li>
-          <li><a href="#gallery">Gallery</a></li>
-          <li><a href="notes.html">Notes</a></li>
-          <li><a href="#contact">Contact</a></li>
-          <li><a href="enroll.html" class="nav-enroll">Enroll</a></li>
-          <li><a href="login.html" class="nav-portal-btn">🔐 Portal Login</a></li>
+          <li><a href="#about" data-i18n="nav_about">About</a></li>
+          <li><a href="#grades" data-i18n="nav_courses">Courses</a></li>
+          <li><a href="#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
+          <li><a href="#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
+          <li><a href="#fees" data-i18n="nav_fees">Fees</a></li>
+          <li><a href="#faculty" data-i18n="nav_faculty">Faculty</a></li>
+          <li><a href="#testimonials" data-i18n="nav_testimonials">Testimonials</a></li>
+          <li><a href="#gallery" data-i18n="nav_gallery">Gallery</a></li>
+          <li><a href="notes.html" data-i18n="nav_notes">Notes</a></li>
+          <li><a href="#contact" data-i18n="nav_contact">Contact</a></li>
+          <li><a href="enroll.html" class="nav-enroll" data-i18n="nav_enroll">Enroll</a></li>
+          <li><a href="login.html" class="nav-portal-btn" data-i18n="nav_login">🔐 Portal Login</a></li>
         </ul>
       </nav>
     </div>
@@ -58,13 +66,13 @@
 
     <!-- Hero section -->
     <section class="hero" role="region" aria-label="Welcome banner">
-      <p class="marathi-tagline">|| ८ वी, ९ वी, १० वी (SSC) व १२ वी (HSC) साठी परिपूर्ण व दर्जेदार शिक्षण ||</p>
-      <h2>Quality Tuition for Classes 8, 9, 10 &amp; 12</h2>
-      <p class="hero-subtext">Maharashtra State Board Coaching • Special Courses in Stock Market &amp; Artificial Intelligence</p>
+      <p class="marathi-tagline" data-i18n="hero_marathi_tagline">|| ८ वी, ९ वी, १० वी (SSC) व १२ वी (HSC) साठी परिपूर्ण व दर्जेदार शिक्षण ||</p>
+      <h2 data-i18n="hero_title">Quality Tuition for Classes 8, 9, 10 &amp; 12</h2>
+      <p class="hero-subtext" data-i18n="hero_subtext">Maharashtra State Board Coaching • Special Courses in Stock Market &amp; Artificial Intelligence</p>
       <div class="hero-cta-group">
-        <a href="enroll.html" class="hero-enroll-btn">Enroll Now</a>
-        <a href="enroll.html?type=demo" class="hero-demo-btn">Book Free Demo Class 🎯</a>
-        <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20admissions%20at%20Nikhillesh%20Bhatkar%20Learning%20Academy." target="_blank" rel="noopener noreferrer" class="hero-whatsapp-btn">💬 WhatsApp Us</a>
+        <a href="enroll.html" class="hero-enroll-btn" data-i18n="hero_btn_enroll">Enroll Now</a>
+        <a href="enroll.html?type=demo" class="hero-demo-btn" data-i18n="hero_btn_demo">Book Free Demo Class 🎯</a>
+        <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20admissions%20at%20Nikhillesh%20Bhatkar%20Learning%20Academy." target="_blank" rel="noopener noreferrer" class="hero-whatsapp-btn" data-i18n="hero_btn_whatsapp">💬 WhatsApp Us</a>
       </div>
     </section>
 
@@ -73,22 +81,22 @@
       <div class="trust-grid">
         <div class="trust-item">
           <span class="trust-icon">🏛️</span>
-          <strong>State Board Focused</strong>
+          <strong data-i18n="trust_concept">State Board Focused</strong>
           <small>Balbharati Syllabus Mastery</small>
         </div>
         <div class="trust-item">
           <span class="trust-icon">👨‍🏫</span>
-          <strong>Expert Faculty</strong>
+          <strong data-i18n="trust_faculty">Expert Faculty</strong>
           <small>Polytechnic Lecturer &amp; Specialists</small>
         </div>
         <div class="trust-item">
           <span class="trust-icon">📝</span>
-          <strong>Weekly Tests</strong>
+          <strong data-i18n="trust_results">Weekly Tests</strong>
           <small>Mock Board Exams &amp; Analysis</small>
         </div>
         <div class="trust-item">
           <span class="trust-icon">🎯</span>
-          <strong>Small Batches</strong>
+          <strong data-i18n="trust_fees">Small Batches</strong>
           <small>Personal 1-on-1 Attention</small>
         </div>
       </div>
@@ -96,8 +104,8 @@
 
     <!-- About -->
     <section id="about" class="content-section">
-      <h2>About Us</h2>
-      <p class="about-text">
+      <h2 data-i18n="about_title">About Us</h2>
+      <p class="about-text" data-i18n="about_p1">
         <strong>Nikhillesh Bhatkar Learning Academy</strong> is a premier coaching institute located in
         <strong>Sangameshwar (near Ninavi Temple)</strong>, dedicated to academic excellence for Maharashtra
         State Board students. We provide focused, concept-driven coaching for Standards 8, 9, 10, and 12, along
@@ -106,63 +114,63 @@
       <div class="why-choose-grid">
         <div class="why-card">
           <span class="why-icon">💡</span>
-          <h3>Conceptual Clarity</h3>
-          <p>We believe in deep understanding over memorization, ensuring students can solve any board problem with confidence.</p>
+          <h3 data-i18n="why_1_title">Conceptual Clarity</h3>
+          <p data-i18n="why_1_desc">We believe in deep understanding over memorization, ensuring students can solve any board problem with confidence.</p>
         </div>
         <div class="why-card">
           <span class="why-icon">📊</span>
-          <h3>Continuous Assessment</h3>
-          <p>Regular chapter-wise tests, surprise quizzes, and full-length prelim exams with individualized progress feedback.</p>
+          <h3 data-i18n="why_2_title">Continuous Assessment</h3>
+          <p data-i18n="why_2_desc">Regular chapter-wise tests, surprise quizzes, and full-length prelim exams with individualized progress feedback.</p>
         </div>
         <div class="why-card">
           <span class="why-icon">🤝</span>
-          <h3>Dedicated Doubt Solving</h3>
-          <p>Every student is encouraged to ask questions. Dedicated time is given for personal doubt clearing after every topic.</p>
+          <h3 data-i18n="why_3_title">Dedicated Doubt Solving</h3>
+          <p data-i18n="why_3_desc">Every student is encouraged to ask questions. Dedicated time is given for personal doubt clearing after every topic.</p>
         </div>
         <div class="why-card">
           <span class="why-icon">🚀</span>
-          <h3>Future-Ready Skills</h3>
-          <p>Beyond traditional tuition, we equip students with practical skills in modern AI tools and stock market literacy.</p>
+          <h3 data-i18n="why_4_title">Future-Ready Skills</h3>
+          <p data-i18n="why_4_desc">Beyond traditional tuition, we equip students with practical skills in modern AI tools and stock market literacy.</p>
         </div>
       </div>
     </section>
 
     <!-- Grades / Courses -->
     <section id="grades" class="content-section">
-      <h2>Our Courses</h2>
+      <h2 data-i18n="courses_title">Our Courses</h2>
       <div class="card-grid">
         <article class="card">
-          <h3>Standard 8</h3>
-          <p>Fundamental concepts, strong foundations, and exam‑ready practice.</p>
+          <h3 data-i18n="c8_title">Standard 8</h3>
+          <p data-i18n="c8_desc">Fundamental concepts, strong foundations, and exam‑ready practice.</p>
         </article>
         <article class="card">
-          <h3>Standard 9</h3>
-          <p>Deepening knowledge, problem‑solving skills, and concept mastery.</p>
+          <h3 data-i18n="c9_title">Standard 9</h3>
+          <p data-i18n="c9_desc">Deepening knowledge, problem‑solving skills, and concept mastery.</p>
         </article>
         <article class="card">
-          <h3>Standard 10</h3>
-          <p>Board‑exam preparation, mock tests, and last‑minute revisions.</p>
+          <h3 data-i18n="c10_title">Standard 10</h3>
+          <p data-i18n="c10_desc">Board‑exam preparation, mock tests, and last‑minute revisions.</p>
         </article>
         <article class="card">
-          <h3>Standard 12</h3>
-          <p>Advanced topics, college‑gate preparation, and career counselling.</p>
+          <h3 data-i18n="c12_title">Standard 12</h3>
+          <p data-i18n="c12_desc">Advanced topics, college‑gate preparation, and career counselling.</p>
         </article>
       </div>
     </section>
 
     <!-- Special Courses (Skill Development) -->
     <section id="special-courses" class="content-section">
-      <h2>Special Courses</h2>
-      <p class="section-subtitle">Beyond academics — future-ready skill programs in Financial Markets and Artificial Intelligence</p>
+      <h2 data-i18n="special_title">Special Courses</h2>
+      <p class="section-subtitle" data-i18n="special_subtitle">Beyond academics — future-ready skill programs in Financial Markets and Artificial Intelligence</p>
 
       <div class="special-courses-grid">
 
         <!-- Stock Market Course Card -->
         <article class="special-course-card">
           <div class="special-card-header">
-            <span class="special-badge badge-finance">📈 Financial Education</span>
-            <h3>Stock Market &amp; Financial Markets</h3>
-            <p class="special-tagline">Master market fundamentals, candlestick chart reading, technical analysis, and smart investing habits.</p>
+            <span class="special-badge badge-finance" data-i18n="stock_badge">📈 Financial Education</span>
+            <h3 data-i18n="stock_title">Stock Market &amp; Financial Markets</h3>
+            <p class="special-tagline" data-i18n="stock_desc">Master market fundamentals, candlestick chart reading, technical analysis, and smart investing habits.</p>
           </div>
           <div class="special-card-body">
             <div class="special-detail-row">
@@ -691,29 +699,29 @@
 
     <!-- Contact & Location -->
     <section id="contact" class="content-section">
-      <h2>Contact Us &amp; Location</h2>
-      <p class="section-subtitle">Reach out for admissions, free demo classes, or visit our academy in Sangameshwar</p>
+      <h2 data-i18n="contact_title">Contact Us &amp; Location</h2>
+      <p class="section-subtitle" data-i18n="contact_subtitle">Reach out for admissions, free demo classes, or visit our academy in Sangameshwar</p>
 
       <div class="contact-wrapper">
         <!-- Contact Information & Form -->
         <div class="contact-info-col">
           <div class="contact-card">
-            <h3>Academy Address</h3>
-            <p>📍 <strong>At Post Sangameshwar</strong>, Near Ninavi Temple<br>District Ratnagiri, Maharashtra – 415611</p>
+            <h3 data-i18n="addr_title">Academy Address</h3>
+            <p data-i18n="addr_text">📍 <strong>At Post Sangameshwar</strong>, Near Ninavi Temple<br>District Ratnagiri, Maharashtra – 415611</p>
             <p>📞 <strong>Phone:</strong> <a href="tel:+918380096494">+91 8380096494</a></p>
             <p>✉️ <strong>Email:</strong> <a href="mailto:nikhileshbhatkar379@gmail.com">nikhileshbhatkar379@gmail.com</a></p>
             <p>💬 <strong>WhatsApp:</strong> <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20would%20like%20to%20inquire%20about%20admissions." target="_blank" rel="noopener noreferrer">+91 8380096494 (Direct Chat)</a></p>
           </div>
 
           <form id="contactForm" action="https://formsubmit.co/ajax/nikhileshbhatkar379@gmail.com" method="POST">
-            <h4>Send Us a Direct Message</h4>
+            <h4 data-i18n="form_msg_title">Send Us a Direct Message</h4>
             <input type="hidden" name="_subject" value="New Direct Inquiry — Nikhillesh Bhatkar Learning Academy">
             <input type="hidden" name="_template" value="table">
             <input type="hidden" name="_captcha" value="false">
-            <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name">
-            <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email">
-            <textarea name="message" rows="4" placeholder="Your Message (e.g. Inquiring for Standard 10 / AI Course)" required aria-label="Your Message"></textarea>
-            <button type="submit">Send Message</button>
+            <input type="text" name="name" placeholder="Your Name" required aria-label="Your Name" data-i18n-placeholder="form_name_placeholder">
+            <input type="email" name="email" placeholder="Your Email" required aria-label="Your Email" data-i18n-placeholder="form_email_placeholder">
+            <textarea name="message" rows="4" placeholder="Your Message (e.g. Inquiring for Standard 10 / AI Course)" required aria-label="Your Message" data-i18n-placeholder="form_msg_placeholder"></textarea>
+            <button type="submit" data-i18n="form_btn_send">Send Message</button>
           </form>
           <p id="contactSuccess" class="form-success" style="display:none;">✅ Message sent! We will reply shortly.</p>
         </div>
@@ -721,7 +729,7 @@
         <!-- Google Map & Directions -->
         <div class="contact-map-col">
           <div class="map-card">
-            <h3>Find Us on Map</h3>
+            <h3 data-i18n="map_title">Find Us on Map</h3>
             <div class="map-responsive">
               <iframe
                 title="Academy Location - Sangameshwar near Ninavi Temple"
@@ -734,7 +742,7 @@
               </iframe>
             </div>
             <div class="map-actions">
-              <a href="https://www.google.com/maps/dir/?api=1&destination=Ninavi+Temple,+Sangameshwar,+Maharashtra+415611" target="_blank" rel="noopener noreferrer" class="btn-directions">
+              <a href="https://www.google.com/maps/dir/?api=1&destination=Ninavi+Temple,+Sangameshwar,+Maharashtra+415611" target="_blank" rel="noopener noreferrer" class="btn-directions" data-i18n="btn_directions">
                 🚗 Get Directions on Google Maps
               </a>
             </div>
@@ -755,10 +763,13 @@
 
   <!-- Footer -->
   <footer role="contentinfo">
-    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. All rights reserved.</p>
+    <p>&copy; <span id="year"></span> Nikhillesh Bhatkar Learning Academy. <span data-i18n="footer_rights">All rights reserved.</span></p>
   </footer>
 
   <!-- JavaScript -->
+  <script src="auth.js"></script>
+  <script src="i18n.js"></script>
+  <script src="chatbot.js"></script>
   <script src="script.js"></script>
 </body>
 </html>
