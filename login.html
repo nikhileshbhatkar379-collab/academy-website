@@ -104,6 +104,9 @@
           <button type="button" class="btn-demo-fill" id="fillAdminDemo">
             🔑 Fill Admin (admin / admin123)
           </button>
+          <button type="button" class="btn-demo-fill" id="fillFacultyDemo">
+            👨‍🔬 Fill Faculty (amit / amit123)
+          </button>
           <button type="button" class="btn-demo-fill" id="fillStudentDemo">
             🎓 Fill Student (STU-1001 / student123)
           </button>
@@ -179,6 +182,12 @@
         switchTab('admin');
         document.getElementById('adminUsername').value = 'admin';
         document.getElementById('adminPassword').value = 'admin123';
+      });
+
+      document.getElementById('fillFacultyDemo')?.addEventListener('click', () => {
+        switchTab('admin');
+        document.getElementById('adminUsername').value = 'amit';
+        document.getElementById('adminPassword').value = 'amit123';
       });
 
       document.getElementById('fillStudentDemo').addEventListener('click', () => {

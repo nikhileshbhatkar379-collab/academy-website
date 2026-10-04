@@ -1837,17 +1837,33 @@ const AcademyDB = {
 const Auth = {
   // Admin Login
   loginAdmin: (usernameOrEmail, password) => {
-    const admin = AcademyDB.getAdmin();
+    const primaryAdmin = AcademyDB.getAdmin();
     const cleanUser = (usernameOrEmail || '').trim().toLowerCase();
     const cleanPass = (password || '').trim();
 
-    const isMatch = (cleanUser === admin.username.toLowerCase() || cleanUser === admin.email.toLowerCase()) && cleanPass === admin.password;
-    if (isMatch) {
+    // Accounts authorized for Admin / Faculty Dashboard
+    const adminAccounts = [
+      primaryAdmin,
+      {
+        username: 'amit',
+        email: 'amit.pawaskar@academy.com',
+        password: 'amit123',
+        name: 'Amit Pawaskar',
+        role: 'admin'
+      }
+    ];
+
+    const matchedAdmin = adminAccounts.find(a =>
+      (cleanUser === (a.username || '').toLowerCase() || cleanUser === (a.email || '').toLowerCase()) &&
+      cleanPass === a.password
+    );
+
+    if (matchedAdmin) {
       const session = {
         role: 'admin',
-        name: admin.name,
-        email: admin.email,
-        username: admin.username,
+        name: matchedAdmin.name,
+        email: matchedAdmin.email,
+        username: matchedAdmin.username,
         loginTime: new Date().toISOString()
       };
       sessionStorage.setItem('academy_session', JSON.stringify(session));
