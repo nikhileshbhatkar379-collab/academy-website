@@ -981,3 +981,28 @@ function renderStudentQuiz(user) {
   }
 }
 
+
+// -------------------------------------------------------------
+// TIMETABLE RENDER
+// -------------------------------------------------------------
+function renderStudentTimetable() {
+  const timetable = AcademyDB.getTimetable() || [];
+  const tbody = document.getElementById('studentTimetableBody');
+  if (!tbody) return;
+
+  if (timetable.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="6" class="text-center">No timetable entries available at this time.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = timetable.map(t => `
+    <tr>
+      <td><strong>${t.standard}</strong></td>
+      <td>${t.days}</td>
+      <td><strong>${t.time}</strong></td>
+      <td>${t.subjects}</td>
+      <td>${t.faculty}</td>
+      <td><span class="badge badge-standard">${t.room}</span></td>
+    </tr>
+  `).join('');
+}

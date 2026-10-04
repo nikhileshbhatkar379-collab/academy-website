@@ -965,7 +965,12 @@ function renderTimetableManager() {
   const tbody = document.getElementById('timetableTableBody');
   if (!tbody) return;
 
-  tbody.innerHTML = timetable.map(t => `
+  if (timetable.length === 0) {
+    tbody.innerHTML = `<tr><td colspan="7" class="text-center">No timetable entries found.</td></tr>`;
+    return;
+  }
+
+  tbody.innerHTML = timetable.map((t, index) => `
     <tr>
       <td><strong>${t.standard}</strong></td>
       <td>${t.days}</td>
@@ -973,9 +978,50 @@ function renderTimetableManager() {
       <td>${t.subjects}</td>
       <td>${t.faculty}</td>
       <td><span class="badge badge-standard">${t.room}</span></td>
+      <td class="text-right table-actions">
+        <button class="btn-icon text-blue" title="Edit Entry" onclick="editTimetable(${index})">✏️</button>
+        <button class="btn-icon text-red" title="Delete Entry" onclick="deleteTimetable(${index})">🗑️</button>
+      </td>
     </tr>
   `).join('');
 }
+
+// Open Timetable Modal
+const timetableModal = document.getElementById('timetableModal');
+const timetableForm = document.getElementById('timetableForm');
+
+window.openTimetableModal = (index = -1) => {
+  const timetable = AcademyDB.getTimetable() || [];
+  document.getElementById('timetableModalTitle').textContent = index >= 0 ? "Edit Timetable Entry" : "Add Timetable Entry";
+  
+  if (index >= 0 && timetable[index]) {
+    const t = timetable[index];
+    document.getElementById('modalTimetableIndex').value = index;
+    document.getElementById('modalTtStandard').value = t.standard;
+    document.getElementById('modalTtDays').value = t.days;
+    document.getElementById('modalTtTime').value = t.time;
+    document.getElementById('modalTtRoom').value = t.room;
+    document.getElementById('modalTtSubjects').value = t.subjects;
+    document.getElementById('modalTtFaculty').value = t.faculty;
+  } else {
+    document.getElementById('modalTimetableIndex').value = '';
+    timetableForm.reset();
+  }
+  timetableModal.style.display = 'flex';
+};
+
+window.editTimetable = (index) => {
+  openTimetableModal(index);
+};
+
+window.deleteTimetable = (index) => {
+  if(confirm("Are you sure you want to delete this timetable entry?")) {
+    const timetable = AcademyDB.getTimetable() || [];
+    timetable.splice(index, 1);
+    AcademyDB.saveTimetable(timetable);
+    renderTimetableManager();
+  }
+};
 
 // -------------------------------------------------------------
 // 12. HALL OF FAME / TOPPERS
