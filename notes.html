@@ -2,9 +2,10 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8">
-  <title>Study Notes &amp; Learning Materials — Nikhillesh Bhatkar Learning Academy</title>
+  <title>Study Notes &amp; Board Question Papers — Nikhillesh Bhatkar Learning Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <meta name="description" content="Download free study notes, formula sheets, and chapter summaries for Maharashtra State Board Classes 8, 9, 10 & 12, Stock Market, and AI courses.">
+  <meta name="description" content="Download Maharashtra State Board SSC Class 10 and HSC Class 12 Previous Year Question Papers (PYQs), Model Solutions, Formula Sheets, and SCERT Question Banks.">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,12 +31,13 @@
       <nav role="navigation" aria-label="Main navigation">
         <ul>
           <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#vision-mission" data-i18n="nav_vision">Vision &amp; Mission</a></li>
           <li><a href="index.html#grades" data-i18n="nav_courses">Courses</a></li>
           <li><a href="index.html#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
           <li><a href="index.html#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
           <li><a href="index.html#fees" data-i18n="nav_fees">Fees</a></li>
           <li><a href="index.html#faculty" data-i18n="nav_faculty">Faculty</a></li>
-          <li><a href="notes.html" class="nav-active" data-i18n="nav_notes">Notes</a></li>
+          <li><a href="notes.html" class="nav-active" data-i18n="nav_notes">Notes &amp; Board Papers</a></li>
           <li><a href="index.html#contact" data-i18n="nav_contact">Contact</a></li>
           <li><a href="enroll.html" data-i18n="nav_enroll">Enroll</a></li>
           <li><a href="login.html" class="nav-portal-btn" data-i18n="nav_login">🔐 Portal Login</a></li>
@@ -46,16 +48,16 @@
 
   <main id="main">
 
-    <!-- Notes Hero -->
+    <!-- Notes & Papers Hero -->
     <section class="notes-hero" role="region" aria-label="Notes Banner">
       <div class="notes-hero-content">
         <span class="notes-badge" data-i18n="notes_hero_badge">📚 Free &amp; Enrolled Learning Resources</span>
-        <h2 data-i18n="notes_hero_title">Study Notes, Formula Sheets &amp; Revision Guides</h2>
-        <p data-i18n="notes_hero_sub">Chapter-wise PDF summaries, formula books, and revision materials for Maharashtra State Board &amp; Special Skill Courses.</p>
+        <h2 data-i18n="notes_hero_title">Study Notes &amp; Maharashtra Board Question Papers</h2>
+        <p data-i18n="notes_hero_sub">Chapter-wise PDF summaries, formula books, Previous Year Board Papers (PYQs), and SCERT question banks for Maharashtra State Board.</p>
 
         <!-- Search and Filter Bar -->
         <div class="notes-search-box">
-          <input type="text" id="notesSearchInput" data-i18n-placeholder="notes_search_placeholder" placeholder="🔍 Search notes by chapter name, concept keyword, or subject..." aria-label="Search study notes">
+          <input type="text" id="notesSearchInput" data-i18n-placeholder="notes_search_placeholder" placeholder="🔍 Search notes or board papers by year, chapter, marks, subject..." aria-label="Search study notes and papers">
         </div>
       </div>
     </section>
@@ -63,18 +65,41 @@
     <!-- Notes Section -->
     <section class="content-section notes-container">
 
+      <!-- Resource Type Filter Tabs -->
+      <div class="resource-type-tabs" role="tablist">
+        <button class="res-type-btn active" data-type="all" data-i18n="res_type_all">🌟 All Materials</button>
+        <button class="res-type-btn" data-type="papers" data-i18n="res_type_papers">📝 Board Question Papers (PYQ)</button>
+        <button class="res-type-btn" data-type="notes" data-i18n="res_type_notes">📖 Study Notes &amp; Formulas</button>
+        <button class="res-type-btn" data-type="banks" data-i18n="res_type_banks">📋 SCERT Question Banks</button>
+      </div>
+
       <!-- Standard / Category Filter Controls -->
       <div class="notes-filter-bar">
         <div class="filter-group">
-          <span class="filter-label">Filter:</span>
+          <span class="filter-label">Standard:</span>
           <div class="filter-pills" id="standardFilterPills">
             <button class="filter-pill active" data-filter="all" data-i18n="notes_filter_all">All Standards</button>
-            <button class="filter-pill" data-filter="Standard 8" data-i18n="notes_filter_8">Class 8</button>
-            <button class="filter-pill" data-filter="Standard 9" data-i18n="notes_filter_9">Class 9</button>
             <button class="filter-pill" data-filter="Standard 10 (SSC)" data-i18n="notes_filter_10">Class 10 (SSC)</button>
             <button class="filter-pill" data-filter="Standard 12 (HSC)" data-i18n="notes_filter_12">Class 12 (HSC)</button>
+            <button class="filter-pill" data-filter="Standard 9" data-i18n="notes_filter_9">Class 9</button>
+            <button class="filter-pill" data-filter="Standard 8" data-i18n="notes_filter_8">Class 8</button>
             <button class="filter-pill" data-filter="Special: Stock Market" data-i18n="notes_filter_stock">📈 Stock Market</button>
             <button class="filter-pill" data-filter="Special: AI & Generative AI" data-i18n="notes_filter_ai">🤖 AI Mastery</button>
+          </div>
+        </div>
+
+        <!-- Examination Year / Session Filter -->
+        <div class="filter-group" style="margin-top:0.75rem;">
+          <span class="filter-label">Exam Session:</span>
+          <div class="filter-pills" id="yearFilterPills">
+            <button class="filter-pill active" data-year="all">All Sessions</button>
+            <button class="filter-pill" data-year="2024">📅 2024 Board</button>
+            <button class="filter-pill" data-year="2023">📅 2023 Board</button>
+            <button class="filter-pill" data-year="2022">📅 2022 Board</button>
+            <button class="filter-pill" data-year="2020">📅 2020 Board</button>
+            <button class="filter-pill" data-year="2019">📅 2019 Board</button>
+            <button class="filter-pill" data-year="SCERT">📋 SCERT Question Banks</button>
+            <button class="filter-pill" data-year="Model">🎯 Model / Annual Papers</button>
           </div>
         </div>
       </div>
@@ -92,7 +117,7 @@
 
       <!-- Empty State -->
       <div id="noNotesFound" class="no-notes-box" style="display:none;">
-        <p>🔍 No study materials matched your search query or filter.</p>
+        <p>🔍 No study materials or board question papers matched your search query or filter.</p>
         <button id="btnResetNotesFilter" class="btn-secondary" style="margin-top:1rem;">Reset All Filters</button>
       </div>
 
@@ -113,7 +138,7 @@
   </main>
 
   <!-- Floating WhatsApp Chat Button -->
-  <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20have%20a%20doubt%20about%20the%20study%20notes." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
+  <a href="https://wa.me/918380096494?text=Hello%20Nikhillesh%20Sir%2C%20I%20have%20a%20doubt%20about%20the%20Board%20Question%20Papers%20and%20Notes." class="floating-whatsapp" target="_blank" rel="noopener noreferrer" aria-label="Chat with us on WhatsApp">
     <svg class="whatsapp-icon" viewBox="0 0 24 24" width="32" height="32" fill="currentColor">
       <path d="M12.04 2c-5.46 0-9.91 4.45-9.91 9.91 0 1.75.46 3.45 1.32 4.95L2.05 22l5.25-1.38c1.45.79 3.08 1.21 4.74 1.21 5.46 0 9.91-4.45 9.91-9.91 0-2.65-1.03-5.14-2.9-7.01A9.816 9.816 0 0 0 12.04 2zm5.79 14.07c-.24.68-1.4 1.26-1.95 1.34-.51.08-1.17.11-3.77-.96-3.13-1.29-5.14-4.47-5.3-4.68-.16-.21-1.27-1.69-1.27-3.23 0-1.54.81-2.29 1.1-2.6.29-.31.63-.39.84-.39.21 0 .42.01.6.02.19.01.45-.07.7.54.26.62.89 2.16.97 2.32.08.16.13.35.03.56-.11.21-.16.34-.32.53-.16.19-.34.42-.48.56-.16.16-.33.33-.14.65.19.32.84 1.38 1.8 2.24 1.24 1.11 2.29 1.45 2.61 1.61.32.16.51.13.7-.08.19-.21.81-.94 1.02-1.26.21-.32.42-.27.7-.16.29.11 1.83.86 2.14 1.02.32.16.53.24.6.37.08.13.08.77-.16 1.45z"/>
     </svg>
@@ -132,30 +157,77 @@
   <script src="script.js"></script>
   <script>
     document.addEventListener('DOMContentLoaded', () => {
-      let currentFilter = 'all';
+      let currentStandard = 'all';
+      let currentType = 'all';
+      let currentYear = 'all';
       let searchQuery = '';
 
       const notesGrid = document.getElementById('notesGrid');
       const noNotesFound = document.getElementById('noNotesFound');
       const searchInput = document.getElementById('notesSearchInput');
-      const filterPills = document.querySelectorAll('#standardFilterPills .filter-pill');
+      const standardPills = document.querySelectorAll('#standardFilterPills .filter-pill');
+      const yearPills = document.querySelectorAll('#yearFilterPills .filter-pill');
+      const typeBtns = document.querySelectorAll('.resource-type-tabs .res-type-btn');
       const countText = document.getElementById('notesCountText');
 
-      function renderNotes() {
-        const allNotes = AcademyDB.getNotes();
-        const filtered = allNotes.filter(note => {
-          const matchFilter = (currentFilter === 'all') || (note.standard === currentFilter);
-          const matchSearch = !searchQuery || (
-            note.title.toLowerCase().includes(searchQuery) ||
-            note.subject.toLowerCase().includes(searchQuery) ||
-            note.chapter.toLowerCase().includes(searchQuery) ||
-            note.description.toLowerCase().includes(searchQuery) ||
-            note.standard.toLowerCase().includes(searchQuery)
-          );
-          return matchFilter && matchSearch;
+      // Check URL hash for direct filter (e.g. notes.html#papers)
+      if (window.location.hash === '#papers') {
+        currentType = 'papers';
+        typeBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-type') === 'papers'));
+      }
+
+      function getMergedResources() {
+        const notes = (AcademyDB.getNotes() || []).map(n => ({ ...n, itemCategory: 'note' }));
+        const papers = (AcademyDB.getPapers() || []).map(p => ({ ...p, itemCategory: 'paper' }));
+        return [...papers, ...notes];
+      }
+
+      function renderResources() {
+        const allItems = getMergedResources();
+
+        const filtered = allItems.filter(item => {
+          // Standard filter
+          const matchStandard = (currentStandard === 'all') || (item.standard === currentStandard);
+
+          // Type filter
+          let matchType = true;
+          if (currentType === 'notes') {
+            matchType = item.itemCategory === 'note';
+          } else if (currentType === 'papers') {
+            matchType = item.itemCategory === 'paper' && item.type === 'Board PYQ';
+          } else if (currentType === 'banks') {
+            matchType = item.type === 'SCERT Question Bank' || item.type === 'Model Paper';
+          }
+
+          // Year / Session filter
+          let matchYear = true;
+          if (currentYear !== 'all') {
+            if (currentYear === 'SCERT') {
+              matchYear = (item.type && item.type.includes('SCERT')) || (item.year && item.year.includes('Bank'));
+            } else if (currentYear === 'Model') {
+              matchYear = item.type === 'Model Paper' || (item.year && item.year.includes('Model'));
+            } else {
+              matchYear = (item.year && item.year.includes(currentYear)) || (item.title && item.title.includes(currentYear));
+            }
+          }
+
+          // Search query
+          const textCorpus = [
+            item.title,
+            item.subject,
+            item.standard,
+            item.chapter || '',
+            item.year || '',
+            item.type || '',
+            item.description || ''
+          ].join(' ').toLowerCase();
+
+          const matchSearch = !searchQuery || textCorpus.includes(searchQuery);
+
+          return matchStandard && matchType && matchYear && matchSearch;
         });
 
-        countText.textContent = `Showing ${filtered.length} study material${filtered.length === 1 ? '' : 's'}`;
+        countText.textContent = `Showing ${filtered.length} learning resource${filtered.length === 1 ? '' : 's'}`;
 
         if (filtered.length === 0) {
           notesGrid.innerHTML = '';
@@ -164,39 +236,85 @@
         }
 
         noNotesFound.style.display = 'none';
-        notesGrid.innerHTML = filtered.map(note => {
-          // Determine badge color class
+        notesGrid.innerHTML = filtered.map(item => {
+          // Determine subject tag style
           let tagClass = 'math-tag';
-          if (note.subject.toLowerCase().includes('science')) tagClass = 'science-tag';
-          if (note.subject.toLowerCase().includes('physics')) tagClass = 'physics-tag';
-          if (note.subject.toLowerCase().includes('chemistry')) tagClass = 'chemistry-tag';
-          if (note.subject.toLowerCase().includes('financial') || note.subject.toLowerCase().includes('stock')) tagClass = 'stock-tag';
-          if (note.subject.toLowerCase().includes('artificial') || note.subject.toLowerCase().includes('ai')) tagClass = 'ai-tag';
+          const subLower = (item.subject || '').toLowerCase();
+          if (subLower.includes('science')) tagClass = 'science-tag';
+          if (subLower.includes('physics')) tagClass = 'physics-tag';
+          if (subLower.includes('chemistry')) tagClass = 'chemistry-tag';
+          if (subLower.includes('financial') || subLower.includes('stock')) tagClass = 'stock-tag';
+          if (subLower.includes('artificial') || subLower.includes('ai')) tagClass = 'ai-tag';
 
-          return `
-            <article class="note-card">
-              <div class="note-card-header">
-                <span class="note-standard-tag">${note.standard}</span>
-                <span class="note-subject-tag ${tagClass}">${note.subject}</span>
-              </div>
-              <h3 class="note-title">${note.title}</h3>
-              <p class="note-chapter">📖 <strong>${note.chapter}</strong></p>
-              <p class="note-desc">${note.description}</p>
-              <div class="note-meta">
-                <span>📄 Format: <strong>${note.fileType || 'PDF'}</strong></span>
-                <span>📦 Size: <strong>${note.size || '2.0 MB'}</strong></span>
-                <span>📅 ${note.date || 'Updated recently'}</span>
-              </div>
-              <div class="note-actions">
-                <button class="btn-download-note" onclick="downloadSampleNote('${note.id}', '${encodeURIComponent(note.title)}')">
-                  ⬇️ Download Note PDF
-                </button>
-                <button class="btn-preview-note" onclick="previewNoteContent('${note.id}')">
-                  👁️ Quick Preview
-                </button>
-              </div>
-            </article>
-          `;
+          if (item.itemCategory === 'paper') {
+            // Render Board Question Paper Card
+            let paperTypeBadge = 'badge-pyq';
+            if (item.type === 'SCERT Question Bank') paperTypeBadge = 'badge-bank';
+            if (item.type === 'Model Paper') paperTypeBadge = 'badge-model';
+
+            return `
+              <article class="note-card paper-card">
+                <div class="note-card-header">
+                  <span class="note-standard-tag">${item.standard}</span>
+                  <span class="paper-type-pill ${paperTypeBadge}">📝 ${item.type}</span>
+                  <span class="note-subject-tag ${tagClass}">${item.subject}</span>
+                </div>
+                <h3 class="note-title">${item.title}</h3>
+                <div class="paper-highlight-row">
+                  <span class="paper-year-pill">📅 ${item.year || 'Board Paper'}</span>
+                  <span class="paper-marks-pill">🎯 ${item.marks || 'Full Marks'}</span>
+                  <span>⏱️ ${item.duration || '2-3 Hours'}</span>
+                </div>
+                <p class="note-desc">${item.description}</p>
+                <div class="note-meta">
+                  <span>📄 Format: <strong>${item.fileType || 'PDF'}</strong></span>
+                  <span>📦 Size: <strong>${item.size || '2.5 MB'}</strong></span>
+                  <span>📅 ${item.date || 'Board Official'}</span>
+                </div>
+                <div class="note-actions">
+                  <button class="btn-download-note" onclick="downloadSamplePaper('${item.id}', '${encodeURIComponent(item.title)}')">
+                    ⬇️ Download Paper PDF
+                  </button>
+                  ${item.solutionAvailable ? `
+                    <button class="btn-solution-note" onclick="viewPaperSolution('${item.id}', '${encodeURIComponent(item.title)}')">
+                      💡 Solution / Answer Key
+                    </button>
+                  ` : `
+                    <button class="btn-preview-note" onclick="previewPaperOverview('${item.id}')">
+                      👁️ Overview
+                    </button>
+                  `}
+                </div>
+              </article>
+            `;
+          } else {
+            // Render Study Note Card
+            return `
+              <article class="note-card">
+                <div class="note-card-header">
+                  <span class="note-standard-tag">${item.standard}</span>
+                  <span class="paper-type-pill badge-notes">📖 Notes &amp; Formulas</span>
+                  <span class="note-subject-tag ${tagClass}">${item.subject}</span>
+                </div>
+                <h3 class="note-title">${item.title}</h3>
+                <p class="note-chapter">📖 <strong>${item.chapter}</strong></p>
+                <p class="note-desc">${item.description}</p>
+                <div class="note-meta">
+                  <span>📄 Format: <strong>${item.fileType || 'PDF'}</strong></span>
+                  <span>📦 Size: <strong>${item.size || '2.0 MB'}</strong></span>
+                  <span>📅 ${item.date || 'Updated recently'}</span>
+                </div>
+                <div class="note-actions">
+                  <button class="btn-download-note" onclick="downloadSampleNote('${item.id}', '${encodeURIComponent(item.title)}')">
+                    ⬇️ Download Note PDF
+                  </button>
+                  <button class="btn-preview-note" onclick="previewNoteContent('${item.id}')">
+                    👁️ Quick Preview
+                  </button>
+                </div>
+              </article>
+            `;
+          }
         }).join('');
       }
 
@@ -204,17 +322,37 @@
       if (searchInput) {
         searchInput.addEventListener('input', (e) => {
           searchQuery = e.target.value.toLowerCase().trim();
-          renderNotes();
+          renderResources();
         });
       }
 
-      // Filter Handler
-      filterPills.forEach(pill => {
+      // Type Filter Buttons
+      typeBtns.forEach(btn => {
+        btn.addEventListener('click', () => {
+          typeBtns.forEach(b => b.classList.remove('active'));
+          btn.classList.add('active');
+          currentType = btn.getAttribute('data-type');
+          renderResources();
+        });
+      });
+
+      // Standard Filter Pills
+      standardPills.forEach(pill => {
         pill.addEventListener('click', () => {
-          filterPills.forEach(p => p.classList.remove('active'));
+          standardPills.forEach(p => p.classList.remove('active'));
           pill.classList.add('active');
-          currentFilter = pill.getAttribute('data-filter');
-          renderNotes();
+          currentStandard = pill.getAttribute('data-filter');
+          renderResources();
+        });
+      });
+
+      // Year Filter Pills
+      yearPills.forEach(pill => {
+        pill.addEventListener('click', () => {
+          yearPills.forEach(p => p.classList.remove('active'));
+          pill.classList.add('active');
+          currentYear = pill.getAttribute('data-year');
+          renderResources();
         });
       });
 
@@ -222,34 +360,190 @@
       const btnReset = document.getElementById('btnResetNotesFilter');
       if (btnReset) {
         btnReset.addEventListener('click', () => {
-          currentFilter = 'all';
+          currentStandard = 'all';
+          currentType = 'all';
+          currentYear = 'all';
           searchQuery = '';
           if (searchInput) searchInput.value = '';
-          filterPills.forEach(p => {
-            if (p.getAttribute('data-filter') === 'all') p.classList.add('active');
-            else p.classList.remove('active');
-          });
-          renderNotes();
+          standardPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-filter') === 'all'));
+          yearPills.forEach(p => p.classList.toggle('active', p.getAttribute('data-year') === 'all'));
+          typeBtns.forEach(b => b.classList.toggle('active', b.getAttribute('data-type') === 'all'));
+          renderResources();
         });
       }
 
       // Initial Render
-      renderNotes();
+      renderResources();
     });
 
     // Helper functions for Note downloads & previews
     function downloadSampleNote(noteId, title) {
       const decodedTitle = decodeURIComponent(title);
-      alert(`📥 Downloading: "${decodedTitle}"\n\nNikhillesh Bhatkar Learning Academy study material is ready.`);
+      alert(`📥 Downloading Study Note: "${decodedTitle}"\n\nNikhillesh Bhatkar Learning Academy study material is ready for download.`);
     }
 
     function previewNoteContent(noteId) {
       const allNotes = AcademyDB.getNotes();
       const note = allNotes.find(n => n.id === noteId);
       if (note) {
-        alert(`📖 Note Preview:\n\n${note.title}\nStandard: ${note.standard}\nSubject: ${note.subject}\nChapter: ${note.chapter}\n\nOverview:\n${note.description}\n\nFull PDF content available for enrolled academy students.`);
+        alert(`📖 Study Note Preview:\n\n${note.title}\nStandard: ${note.standard}\nSubject: ${note.subject}\nChapter: ${note.chapter}\n\nOverview:\n${note.description}\n\nFull PDF formulas and notes available for all students.`);
       }
     }
+
+    // Interactive Question Paper & Solution Modal Functions
+    function openPaperModal(paperId, mode) {
+      const allPapers = AcademyDB.getPapers() || [];
+      const paper = allPapers.find(p => p.id === paperId);
+      if (!paper) return;
+
+      const modal = document.getElementById('paperModal');
+      const titleEl = document.getElementById('paperModalTitle');
+      const contentEl = document.getElementById('paperModalContent');
+      const waBtn = document.getElementById('btnModalAskDoubt');
+
+      if (!modal || !contentEl) return;
+
+      titleEl.textContent = mode === 'solution'
+        ? `💡 Model Solution & Marking Scheme — ${paper.subject}`
+        : `📝 ${paper.title}`;
+
+      const waMsg = encodeURIComponent(`Hello Nikhillesh Sir, I am solving this question paper: ${paper.title} and have a doubt.`);
+      if (waBtn) waBtn.href = `https://wa.me/918380096494?text=${waMsg}`;
+
+      const blueprintHtml = paper.blueprint ? `
+        <div class="paper-blueprint-card">
+          <h5>📐 Official Maharashtra Board Examination Blueprint</h5>
+          <p style="margin:0;font-size:0.9rem;color:#334155;">${paper.blueprint}</p>
+        </div>
+      ` : '';
+
+      contentEl.innerHTML = `
+        <div class="paper-view-header">
+          <h4>${paper.title}</h4>
+          <div class="paper-meta-badge-row">
+            <span class="paper-meta-badge">${paper.standard}</span>
+            <span class="paper-meta-badge">${paper.subject}</span>
+            <span class="paper-meta-badge badge-marks">🎯 Total: ${paper.marks}</span>
+            <span class="paper-meta-badge badge-time">⏱️ Time: ${paper.duration || '2-3 Hours'}</span>
+            <span class="paper-meta-badge">📅 Session: ${paper.year}</span>
+            <span class="paper-meta-badge">📄 Format: ${paper.fileType || 'PDF'}</span>
+          </div>
+          <p style="margin:0.8rem 0 0 0;font-size:0.9rem;color:#475569;">${paper.description}</p>
+        </div>
+
+        ${blueprintHtml}
+
+        <div class="paper-section-block">
+          <h5><span>📌 Section A — Objective &amp; Fundamental Concepts</span> <span style="font-size:0.8rem;color:#64748b;">(Compulsory)</span></h5>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.1 (A) Choose the correct alternative for each of the multiple-choice questions.</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Concept definitions, formula identification, SI units, and standard mathematical identities.
+              <div class="paper-marking-step">Marking Scheme: 1 Mark for each correct option with question sub-alphabet.</div>
+            </div>
+          </div>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.1 (B) Solve the 1-mark direct questions / scientific true or false / fill in the blanks.</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Short direct single-step calculations or definitions.
+              <div class="paper-marking-step">Marking Scheme: 1 Mark per sub-question. Full marks for exact answer.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-section-block">
+          <h5><span>📌 Section B — 2-Mark Short Answer Questions &amp; Activities</span></h5>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.2 (A) Complete the activity by filling in the empty boxes (Any Two).</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Flowchart filling, substitution into standard formulas, theorem step-completions.
+              <div class="paper-marking-step">Marking Scheme: 1/2 mark for each correctly filled box (4 boxes = 2 marks).</div>
+            </div>
+          </div>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.2 (B) Solve short questions / give scientific reasons (Any Four).</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Two distinct scientific points or two steps of algebraic/geometric problem solving.
+              <div class="paper-marking-step">Marking Scheme: 1 mark per point/step. Total 2 marks each.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-section-block">
+          <h5><span>📌 Section C — 3-Mark Explanations, Theorems &amp; Numericals</span></h5>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.3 Detailed answers / theorem proofs / numerical problem-solving.</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Full geometric proofs, balanced chemical equations with state symbols, complete physics derivations.
+              <div class="paper-marking-step">Marking Scheme: Formula: 1M • Substitution: 1M • Final Answer with correct units: 1M.</div>
+            </div>
+          </div>
+        </div>
+
+        <div class="paper-section-block">
+          <h5><span>📌 Section D — 4-Mark Creative &amp; HOTS (Higher Order Thinking Skills)</span></h5>
+          <div class="paper-q-item">
+            <div class="paper-q-text">Q.4 Solve non-textual creative problems / analyze case studies.</div>
+            <div class="paper-sol-box">
+              <strong>Key Focus:</strong> Novel question structures testing deep understanding beyond rote memorization.
+              <div class="paper-marking-step">Marking Scheme: Logical sequence: 2M • Calculations: 1.5M • Final conclusion: 0.5M.</div>
+            </div>
+          </div>
+        </div>
+
+        <div style="background:#fff8e7;border:1px solid #fde68a;border-radius:6px;padding:0.9rem;font-size:0.88rem;color:#92400e;margin-top:1rem;">
+          💡 <strong>Teacher Mentorship Tip by Nikhillesh Bhatkar Sir:</strong> Write answers in neat handwriting with legible index numbers. Underline key formulas and final answers with units. Enrolled students can submit solved answer sheets during weekly Sunday tests for personalized marking.
+        </div>
+      `;
+
+      modal.style.display = 'flex';
+
+      if (mode === 'download') {
+        setTimeout(() => {
+          if (confirm(`📥 Question Paper Ready!\n\nWould you like to open the print dialog to save "${paper.title}" as a PDF or print it?`)) {
+            window.print();
+          }
+        }, 300);
+      }
+    }
+
+    function closePaperModal() {
+      const modal = document.getElementById('paperModal');
+      if (modal) modal.style.display = 'none';
+    }
+
+    function printPaperContent() {
+      window.print();
+    }
+
+    // Helper functions for Board Paper downloads & solutions
+    function downloadSamplePaper(paperId, title) {
+      openPaperModal(paperId, 'download');
+    }
+
+    function viewPaperSolution(paperId, title) {
+      openPaperModal(paperId, 'solution');
+    }
+
+    function previewPaperOverview(paperId) {
+      openPaperModal(paperId, 'overview');
+    }
   </script>
+
+  <!-- Question Paper & Model Solution Modal -->
+  <div id="paperModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3 id="paperModalTitle">📝 Board Question Paper</h3>
+        <button class="modal-close" onclick="closePaperModal()">&times;</button>
+      </div>
+      <div id="paperModalContent" class="paper-modal-body"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="printPaperContent()">🖨️ Print / Save PDF</button>
+        <a id="btnModalAskDoubt" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa">💬 Ask Doubt on WhatsApp</a>
+        <button class="btn-secondary" onclick="closePaperModal()">Close</button>
+      </div>
+    </div>
+  </div>
 </body>
 </html>

@@ -14,27 +14,63 @@ document.addEventListener('DOMContentLoaded', () => {
     let loaded = 0;
     let failed = 0;
 
+    // Check totals once all async events have settled
+    function updatePlaceholder() {
+      if (loaded > 0) {
+        placeholder.style.display = 'none';
+      } else if (loaded + failed === imgs.length) {
+        // Every image failed to load
+        galleryGrid.style.display = 'none';
+        placeholder.style.display = 'block';
+      }
+    }
+
     imgs.forEach((img) => {
       if (img.complete && img.naturalWidth > 0) {
+        // Already decoded and valid
         loaded++;
+      } else if (img.complete && img.naturalWidth === 0) {
+        // Already errored (broken src)
+        failed++;
+        img.style.display = 'none';
       } else {
         img.addEventListener('load', () => {
           loaded++;
-          if (loaded > 0) placeholder.style.display = 'none';
+          updatePlaceholder();
         });
         img.addEventListener('error', () => {
           failed++;
           img.style.display = 'none';
-          if (failed === imgs.length) {
-            galleryGrid.style.display = 'none';
-            placeholder.style.display = 'block';
-          }
+          updatePlaceholder();
         });
       }
     });
 
-    if (loaded > 0) placeholder.style.display = 'none';
-    if (loaded === 0 && imgs.length === 0) placeholder.style.display = 'block';
+    // Handle any synchronously resolved images
+    updatePlaceholder();
+    if (imgs.length === 0) placeholder.style.display = 'block';
+  }
+
+  // Populate Toppers / Testimonials dynamically if AcademyDB is present
+  const testimonialsGrid = document.querySelector('.testimonials-grid');
+  if (testimonialsGrid && typeof AcademyDB !== 'undefined' && typeof AcademyDB.getToppers === 'function') {
+    const toppers = AcademyDB.getToppers();
+    if (toppers && toppers.length > 0) {
+      testimonialsGrid.innerHTML = toppers.map(t => `
+        <article class="card testimonial-card">
+          <div class="testimonial-header">
+            <span class="testimonial-badge">${t.badge || '🏆 Academy Topper'}</span>
+            <span class="testimonial-score">${t.score || ''}</span>
+          </div>
+          <p class="testimonial-quote">&ldquo;${t.quote || ''}&rdquo;</p>
+          <div class="testimonial-author-block">
+            <strong class="testimonial-author">${t.name}</strong>
+            <span class="testimonial-exam">${t.exam} ${t.year ? '• ' + t.year : ''} ${t.school ? '• ' + t.school : ''}</span>
+            ${t.subjects ? `<span class="testimonial-subs">${t.subjects}</span>` : ''}
+          </div>
+        </article>
+      `).join('');
+    }
   }
 });
 
@@ -75,7 +111,10 @@ if (contactForm) {
     .finally(() => {
       if (submitBtn) {
         submitBtn.disabled = false;
-        submitBtn.textContent = 'Send Message';
+        // Restore button text using active language
+        const lang = (typeof I18n !== 'undefined' && I18n.getCurrentLang) ? I18n.getCurrentLang() : 'en';
+        const labels = { en: 'Send Message', mr: 'संदेश पाठवा', hi: 'संदेश भेजें' };
+        submitBtn.textContent = labels[lang] || 'Send Message';
       }
     });
   });

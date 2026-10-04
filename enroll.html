@@ -5,6 +5,7 @@
   <title>Enroll — Nikhillesh Bhatkar Learning Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <meta name="description" content="Enroll at Nikhillesh Bhatkar Learning Academy. Fill the enrollment form for classes 8, 9, 10 & 12.">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -30,6 +31,7 @@
       <nav role="navigation" aria-label="Main navigation">
         <ul>
           <li><a href="index.html#about" data-i18n="nav_about">About</a></li>
+          <li><a href="index.html#vision-mission" data-i18n="nav_vision">Vision &amp; Mission</a></li>
           <li><a href="index.html#grades" data-i18n="nav_courses">Courses</a></li>
           <li><a href="index.html#special-courses" data-i18n="nav_special_courses">Special Courses</a></li>
           <li><a href="index.html#syllabus" data-i18n="nav_syllabus">Syllabus</a></li>
@@ -211,6 +213,25 @@
         })
         .then(response => {
           if (response.ok) {
+            // Save to AcademyDB for Admin dashboard visibility
+            if (typeof AcademyDB !== 'undefined' && AcademyDB.getInquiries && AcademyDB.saveInquiries) {
+              try {
+                const inqs = AcademyDB.getInquiries();
+                inqs.unshift({
+                  id: 'INQ' + Date.now().toString().slice(-4),
+                  name: data.get('student_name') || 'New Student',
+                  phone: data.get('parent_phone') || '',
+                  course: data.get('class') || '',
+                  date: new Date().toISOString().split('T')[0],
+                  status: 'New',
+                  notes: `Type: ${data.get('admission_type') || 'Regular'}, Parent: ${data.get('parent_name') || 'N/A'}`
+                });
+                AcademyDB.saveInquiries(inqs);
+              } catch (e) {
+                console.warn('Could not save inquiry to local DB:', e);
+              }
+            }
+
             enrollForm.reset();
             enrollForm.style.display = 'none';
             enrollSuccess.style.display = 'block';
@@ -227,7 +248,9 @@
         .finally(() => {
           if (submitBtn) {
             submitBtn.disabled = false;
-            submitBtn.textContent = 'Submit Enrollment';
+            const lang = (typeof I18n !== 'undefined' && I18n.getCurrentLang) ? I18n.getCurrentLang() : 'en';
+            const labels = { en: 'Submit Enrollment', mr: 'प्रवेश अर्ज पाठवा', hi: 'प्रवेश फॉर्म जमा करें' };
+            submitBtn.textContent = labels[lang] || 'Submit Enrollment';
           }
         });
       });

@@ -121,4 +121,21 @@ git remote add origin https://github.com/<your-username>/academy-website.git
 git branch -M main
 git push -u origin main
 ```
-In your GitHub repo: **Settings → Pages → Source: GitHub Actions** (or Deploy from branch `main`). Your website will be live in 1–2 minutes!
+---
+
+## 👨‍🏫 8. Faculty Profiles & Academic Leadership
+
+### **Nikhillesh Bhatkar** (Founder & Lead Educator)
+- **Qualification:** BE Mechanical Engineering (Bachelor of Engineering)
+- **Teaching Experience:** 15+ Years of teaching excellence in Maharashtra State Board Mathematics & Science.
+- **Financial Market Experience:** 5+ Years of active trading experience in Equities & Derivatives.
+- **Specialized Trading Certifications:**
+  - Completed **ABCT 360 Trading Course** with Vishal Malkan
+  - Completed **Financial Freedom Accelerator (FFA)** Futures & Options (F&O) Course
+- **AI & Modern Technology Certifications:**
+  - Completed **AI Master Course with Be10x** (ChatGPT, Prompt Engineering & Productivity Tools)
+- **Mentorship Focus:** Board exam conceptual mastery, analytical problem solving, stock market financial literacy, and generative AI skills.
+
+### **Amit Pawaskar** (Physics & Chemistry Expert)
+- **Qualification:** BE Mechanical Engineering
+- **Experience:** Lecturer in Polytechnic College; 10+ Years coaching HSC & SSC Board Physics and Chemistry numericals and theory.

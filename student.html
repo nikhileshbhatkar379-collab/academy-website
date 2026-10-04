@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Student Portal — Nikhillesh Bhatkar Learning Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-body">
@@ -21,7 +22,8 @@
         <button class="lang-btn" data-lang="mr" title="मराठी">मराठी</button>
         <button class="lang-btn" data-lang="hi" title="हिंदी">हिंदी</button>
       </div>
-      <span class="admin-user-badge">👨‍🎓 <strong id="studentDisplayName">Student</strong></span>
+      <span class="admin-user-badge">👨🎓 <strong id="studentDisplayName">Student</strong></span>
+      <span class="badge" id="studentNoticeBadge" style="background:#f97316;color:#fff;cursor:pointer;font-size:0.75rem;padding:0.25rem 0.5rem;" title="View Notices">📢 Notices</span>
       <a href="notes.html" class="btn-topbar-link" target="_blank" data-i18n="nav_notes">📚 Notes</a>
       <button class="btn-logout" id="studentLogoutBtn" data-i18n="btn_logout">Logout 🚪</button>
     </div>
@@ -40,6 +42,9 @@
             <span class="badge badge-id" id="studentIdBadge">ID: STU-1001</span>
             <span class="badge" id="studentFeeBadge">Fee: Paid</span>
           </div>
+          <p style="margin:0.4rem 0 0 0;font-size:0.83rem;color:#475569;font-style:italic;">
+            🎯 <strong>Vision:</strong> Conceptual excellence, analytical fearlessness &amp; future-ready leadership.
+          </p>
         </div>
       </div>
       <div class="student-profile-contact">
@@ -52,9 +57,15 @@
     <!-- Student Dashboard Tabs -->
     <div class="student-tabs-wrapper">
       <div class="student-tab-controls" role="tablist">
-        <button class="student-tab-btn active" data-tab="tab-student-notes">📚 My Course Notes &amp; Formula Books</button>
+        <button class="student-tab-btn active" data-tab="tab-student-notes">📚 My Course Notes &amp; Formulas</button>
+        <button class="student-tab-btn" data-tab="tab-student-papers">📝 Board Question Papers &amp; PYQs</button>
         <button class="student-tab-btn" data-tab="tab-student-notices">📢 Academy Announcements</button>
         <button class="student-tab-btn" data-tab="tab-student-timetable">🗓️ Weekly Timetable &amp; Schedule</button>
+        <button class="student-tab-btn" data-tab="tab-student-scorecard">📊 My Scorecard &amp; Report</button>
+        <button class="student-tab-btn" data-tab="tab-student-attendance">📋 My Attendance</button>
+        <button class="student-tab-btn" data-tab="tab-student-doubts">❓ Ask a Doubt</button>
+        <button class="student-tab-btn" data-tab="tab-student-fees">💰 Fee Payment &amp; Receipts</button>
+        <button class="student-tab-btn" data-tab="tab-student-quiz">🎯 Practice Mock MCQ Quiz</button>
       </div>
 
       <!-- ================= TAB 1: MY NOTES ================= -->
@@ -68,7 +79,18 @@
         </div>
       </div>
 
-      <!-- ================= TAB 2: ANNOUNCEMENTS ================= -->
+      <!-- ================= TAB 2: BOARD PAPERS ================= -->
+      <div id="tab-student-papers" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>📝 Maharashtra Board Past Papers &amp; Model Solutions</h3>
+          <span id="studentPapersCount" class="notes-count-badge">Loading papers...</span>
+        </div>
+        <div class="notes-grid" id="studentPapersGrid">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 3: ANNOUNCEMENTS ================= -->
       <div id="tab-student-notices" class="student-tab-panel">
         <div class="tab-header-flex">
           <h3>📢 Latest Academy Notices &amp; Exam Alerts</h3>
@@ -78,7 +100,7 @@
         </div>
       </div>
 
-      <!-- ================= TAB 3: TIMETABLE ================= -->
+      <!-- ================= TAB 4: TIMETABLE ================= -->
       <div id="tab-student-timetable" class="student-tab-panel">
         <div class="tab-header-flex">
           <h3>🗓️ Weekly Regular Batch Schedule</h3>
@@ -120,9 +142,147 @@
         </div>
       </div>
 
+      <!-- ================= TAB 5: SCORECARD ================= -->
+      <div id="tab-student-scorecard" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>📊 My Academic Scorecard &amp; Report Card</h3>
+          <button class="btn-primary btn-sm" onclick="printMyReportCard()">🖨️ Print Report Card</button>
+        </div>
+        <div id="studentScorecardContainer" style="margin-top:16px;">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 6: ATTENDANCE ================= -->
+      <div id="tab-student-attendance" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>📋 My Attendance Record</h3>
+        </div>
+        <div id="studentAttendanceContainer">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 7: DOUBT BOX ================= -->
+      <div id="tab-student-doubts" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>❓ Ask a Doubt or Question</h3>
+        </div>
+
+        <!-- Submission Form -->
+        <div class="dash-card" style="max-width:600px;margin:0 auto 24px auto;">
+          <h4>📬 Submit Your Doubt to Nikhillesh Sir</h4>
+          <p style="margin:0.2rem 0 1rem;font-size:0.85rem;color:#64748b;">Direct 1-on-1 academic mentorship with Nikhillesh Sir (BE Mech • 15+ Years Teaching Experience).</p>
+          <form id="studentDoubtForm" class="admin-form">
+            <div class="form-group">
+              <label for="doubtSubjectInput">Subject</label>
+              <input type="text" id="doubtSubjectInput" placeholder="e.g. Mathematics Part 2 (Geometry)" required>
+            </div>
+            <div class="form-group">
+              <label for="doubtChapterInput">Chapter / Topic</label>
+              <input type="text" id="doubtChapterInput" placeholder="e.g. Chapter 2: Pythagoras Theorem" required>
+            </div>
+            <div class="form-group">
+              <label for="doubtQuestionInput">Your Question <span class="required">*</span></label>
+              <textarea id="doubtQuestionInput" rows="4" placeholder="Type your doubt or question in detail..." required></textarea>
+            </div>
+            <button type="submit" class="btn-primary">📩 Submit Doubt</button>
+          </form>
+        </div>
+
+        <!-- My Previous Doubts -->
+        <div class="tab-header-flex">
+          <h4 style="margin-bottom:0;">My Previous Doubts &amp; Answers</h4>
+        </div>
+        <div id="studentDoubtsList" style="margin-top:12px;">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
+      <!-- ================= TAB 8: FEE PAYMENT ================= -->
+      <div id="tab-student-fees" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>💰 Fee Payment — UPI &amp; Receipts</h3>
+        </div>
+
+        <div class="dashboard-split-grid" style="margin-top:16px;">
+          <!-- UPI QR Card -->
+          <div class="dash-card upi-qr-card">
+            <h3>📱 Scan to Pay Tuition Fee</h3>
+            <div class="upi-qr-display">
+              <div class="upi-qr-placeholder">
+                <div class="qr-box-visual">
+                  <div style="font-size:80px;text-align:center;">📱</div>
+                  <p style="text-align:center;font-weight:bold;margin-top:8px;">Scan with any UPI App</p>
+                </div>
+                <div class="upi-details-box">
+                  <p><strong>UPI ID:</strong> <code>nikhileshbhatkar379@oksbi</code></p>
+                  <p><strong>Name:</strong> Nikhillesh Bhatkar</p>
+                  <p><strong>Bank:</strong> SBI (State Bank of India)</p>
+                  <p style="margin-top:8px;"><small>Accepts: GPay • PhonePe • Paytm • BHIM • Amazon Pay</small></p>
+                </div>
+              </div>
+            </div>
+            <a href="https://wa.me/918380096494?text=Sir%2C%20I%20have%20made%20the%20fee%20payment%20via%20UPI.%20Please%20confirm%20my%20payment%20receipt." target="_blank" rel="noopener noreferrer" class="btn-doubt-wa" style="margin-top:12px;display:block;text-align:center;">
+              💬 Confirm Payment via WhatsApp
+            </a>
+          </div>
+
+          <!-- My Receipts -->
+          <div class="dash-card">
+            <h3>🧾 My Fee Receipts</h3>
+            <div id="studentReceiptsList">
+              <!-- Injected via student.js -->
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- ================= TAB 9: PRACTICE MCQ QUIZ ================= -->
+      <div id="tab-student-quiz" class="student-tab-panel">
+        <div class="tab-header-flex">
+          <h3>🎯 Maharashtra State Board — Interactive Practice MCQ Quiz</h3>
+          <button class="btn-secondary btn-sm" id="btnRestartQuiz">🔄 Retake Quiz</button>
+        </div>
+        <div id="studentQuizContainer" class="quiz-wrapper">
+          <!-- Injected via student.js -->
+        </div>
+      </div>
+
     </div>
 
   </main>
+
+  <!-- Print Scorecard Modal -->
+  <div id="studentPrintModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card modal-print-receipt">
+      <div class="modal-header">
+        <h3>🖨️ Printable Report Card</h3>
+        <button class="modal-close" onclick="document.getElementById('studentPrintModal').style.display='none'">&times;</button>
+      </div>
+      <div id="studentPrintContent" class="receipt-print-area"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="window.print()">🖨️ Print</button>
+        <button class="btn-secondary" onclick="document.getElementById('studentPrintModal').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Question Paper & Model Solution Modal -->
+  <div id="paperModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card modal-large">
+      <div class="modal-header">
+        <h3 id="paperModalTitle">📝 Board Question Paper</h3>
+        <button class="modal-close" onclick="closeStudentPaperModal()">&times;</button>
+      </div>
+      <div id="paperModalContent" class="paper-modal-body"></div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="window.print()">🖨️ Print / Save PDF</button>
+        <a id="btnStudentModalAskDoubt" href="#" target="_blank" rel="noopener noreferrer" class="btn-wa">💬 Ask Doubt to Nikhillesh Sir on WhatsApp</a>
+        <button class="btn-secondary" onclick="closeStudentPaperModal()">Close</button>
+      </div>
+    </div>
+  </div>
 
   <!-- Footer -->
   <footer role="contentinfo">

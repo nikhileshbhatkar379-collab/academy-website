@@ -4,6 +4,7 @@
   <meta charset="UTF-8">
   <title>Admin Dashboard — Nikhillesh Bhatkar Learning Academy</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="icon" type="image/png" href="logo.png">
   <link rel="stylesheet" href="style.css">
 </head>
 <body class="dashboard-body">
@@ -12,6 +13,7 @@
   <header class="admin-topbar">
     <div class="admin-topbar-left">
       <button class="sidebar-toggle-btn" id="sidebarToggleBtn" aria-label="Toggle Sidebar">☰</button>
+      <img src="logo.png" alt="Academy Logo" class="topbar-logo" onerror="this.style.display='none'">
       <h2>🏛️ Nikhillesh Bhatkar Learning Academy — Admin Panel</h2>
     </div>
     <div class="admin-topbar-right">
@@ -35,10 +37,18 @@
         <ul>
           <li><button class="nav-item active" data-tab="tab-overview">📊 Dashboard Overview</button></li>
           <li><button class="nav-item" data-tab="tab-students">👨‍🎓 Student Management</button></li>
-          <li><button class="nav-item" data-tab="tab-notes">📚 Notes &amp; Study Materials</button></li>
+          <li><button class="nav-item" data-tab="tab-notes">📚 Notes &amp; Formulas</button></li>
+          <li><button class="nav-item" data-tab="tab-papers">📝 Board Question Papers</button></li>
           <li><button class="nav-item" data-tab="tab-notices">📢 Notice Board &amp; Alerts</button></li>
           <li><button class="nav-item" data-tab="tab-inquiries">📥 Inquiries &amp; Demo Leads</button></li>
           <li><button class="nav-item" data-tab="tab-settings">⚙️ Settings &amp; Backup</button></li>
+          <li><button class="nav-item" data-tab="tab-tests">📈 Test Marks &amp; Reports</button></li>
+          <li><button class="nav-item" data-tab="tab-attendance">📋 Attendance Tracker</button></li>
+          <li><button class="nav-item" data-tab="tab-doubts">❓ Student Doubt Box</button></li>
+          <li><button class="nav-item" data-tab="tab-fees">💰 Fee Receipts &amp; UPI</button></li>
+          <li><button class="nav-item" data-tab="tab-timetable">🗓️ Timetable Manager</button></li>
+          <li><button class="nav-item" data-tab="tab-toppers">🏆 Hall of Fame</button></li>
+          <li><button class="nav-item" data-tab="tab-whatsapp">💬 WhatsApp Alerts</button></li>
         </ul>
       </nav>
       <div class="sidebar-footer">
@@ -57,6 +67,7 @@
           <div class="quick-actions">
             <button class="btn-primary" id="quickAddStudentBtn">+ Add Student</button>
             <button class="btn-primary" id="quickAddNoteBtn">+ Upload Note</button>
+            <button class="btn-primary" id="quickAddPaperBtn">+ Upload Paper</button>
             <button class="btn-primary" id="quickAddNoticeBtn">+ Post Notice</button>
           </div>
         </div>
@@ -73,8 +84,15 @@
           <div class="metric-card">
             <div class="metric-icon">📚</div>
             <div class="metric-info">
-              <span class="metric-label">Study Notes &amp; Materials</span>
+              <span class="metric-label">Study Notes &amp; Formulas</span>
               <h3 id="statTotalNotes">9</h3>
+            </div>
+          </div>
+          <div class="metric-card">
+            <div class="metric-icon">📝</div>
+            <div class="metric-info">
+              <span class="metric-label">Board Papers &amp; PYQs</span>
+              <h3 id="statTotalPapers">14</h3>
             </div>
           </div>
           <div class="metric-card">
@@ -214,6 +232,52 @@
         </div>
       </section>
 
+      <!-- ================= 3B. BOARD QUESTION PAPERS TAB ================= -->
+      <section id="tab-papers" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📝 Maharashtra Board Question Papers &amp; Solutions</h2>
+          <button class="btn-primary" id="openAddPaperModalBtn">+ Upload New Question Paper</button>
+        </div>
+
+        <!-- Papers Filter -->
+        <div class="table-filter-bar">
+          <input type="text" id="paperSearchInput" placeholder="🔍 Search papers by year, subject, type, or title...">
+          <select id="paperStandardFilter">
+            <option value="all">All Standards</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Special: Stock Market">Stock Market</option>
+            <option value="Special: AI & Generative AI">AI Mastery</option>
+          </select>
+          <select id="paperTypeFilter">
+            <option value="all">All Paper Categories</option>
+            <option value="Board PYQ">Board PYQ (Past Exam)</option>
+            <option value="Model Paper">Model Paper / Mock</option>
+            <option value="SCERT Question Bank">SCERT Question Bank</option>
+          </select>
+        </div>
+
+        <!-- Papers Table -->
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Title &amp; Subject</th>
+                <th>Standard</th>
+                <th>Year / Session</th>
+                <th>Type</th>
+                <th>Marks</th>
+                <th>Solution Key</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="papersTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
       <!-- ================= 4. NOTICES TAB ================= -->
       <section id="tab-notices" class="admin-tab-content">
         <div class="section-title-row">
@@ -318,6 +382,208 @@
                 <input type="file" id="restoreFileInput" accept=".json">
               </div>
               <button class="btn-danger" id="resetDefaultDataBtn">⚠️ Reset to Demo Initial Data</button>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 7. TEST MARKS & REPORT CARDS ================= -->
+      <section id="tab-tests" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📈 Student Test Marks &amp; Report Cards</h2>
+          <button class="btn-primary" id="openAddTestBtn">+ Add Test Result</button>
+        </div>
+        <div class="table-filter-bar">
+          <input type="text" id="testSearchInput" placeholder="🔍 Search by student name or test title...">
+          <select id="testStandardFilter">
+            <option value="all">All Standards</option>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Special">Special Courses</option>
+          </select>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student</th>
+                <th>Standard</th>
+                <th>Test / Exam</th>
+                <th>Subject</th>
+                <th>Date</th>
+                <th>Marks</th>
+                <th>Grade</th>
+                <th>Actions</th>
+              </tr>
+            </thead>
+            <tbody id="testsTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 8. ATTENDANCE TRACKER ================= -->
+      <section id="tab-attendance" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>📋 Daily Attendance Tracker</h2>
+          <button class="btn-primary" id="markTodayAttendanceBtn">📝 Mark Today's Attendance</button>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table">
+            <thead>
+              <tr>
+                <th>Student ID</th>
+                <th>Student Name</th>
+                <th>Standard</th>
+                <th>Total Lectures</th>
+                <th>Attended</th>
+                <th>Attendance %</th>
+                <th>Last Marked</th>
+                <th>Today</th>
+              </tr>
+            </thead>
+            <tbody id="attendanceTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 9. STUDENT DOUBT BOX ================= -->
+      <section id="tab-doubts" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>❓ Student Doubt Box &amp; Q&amp;A</h2>
+        </div>
+        <div class="table-filter-bar">
+          <select id="doubtStatusFilter">
+            <option value="all">All Doubts</option>
+            <option value="Pending">Pending (Unanswered)</option>
+            <option value="Resolved">Resolved</option>
+          </select>
+        </div>
+        <div id="doubtsListContainer" class="doubts-container"></div>
+      </section>
+
+      <!-- ================= 10. FEE RECEIPTS & UPI ================= -->
+      <section id="tab-fees" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>💰 Fee Collection, UPI QR &amp; Receipts</h2>
+          <div class="action-btn-group">
+            <button class="btn-primary" id="openAddReceiptBtn">+ Record Payment</button>
+            <button class="btn-secondary" id="exportReceiptsCsvBtn">📥 Export Receipts</button>
+          </div>
+        </div>
+
+        <div class="dashboard-split-grid">
+          <!-- UPI QR Code Card -->
+          <div class="dash-card upi-qr-card">
+            <h3>📱 Academy UPI QR Code — Scan to Pay</h3>
+            <div class="upi-qr-display">
+              <div class="upi-qr-placeholder">
+                <div class="qr-box-visual">
+                  <div style="font-size:80px;text-align:center;">📱</div>
+                  <p style="text-align:center;font-weight:bold;margin-top:8px;">Scan with any UPI app</p>
+                </div>
+                <div class="upi-details-box">
+                  <p><strong>UPI ID:</strong> <code>nikhileshbhatkar379@oksbi</code></p>
+                  <p><strong>Name:</strong> Nikhillesh Bhatkar</p>
+                  <p><strong>Bank:</strong> SBI (State Bank of India)</p>
+                  <p style="margin-top:8px;"><small>Accepts: GPay • PhonePe • Paytm • BHIM • Amazon Pay</small></p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- Recent Receipts -->
+          <div class="dash-card">
+            <h3>🧾 Recent Fee Receipts</h3>
+            <div class="table-responsive">
+              <table class="data-table">
+                <thead>
+                  <tr>
+                    <th>Receipt #</th>
+                    <th>Student</th>
+                    <th>Amount</th>
+                    <th>Mode</th>
+                    <th>Date</th>
+                    <th>Actions</th>
+                  </tr>
+                </thead>
+                <tbody id="receiptsTableBody"></tbody>
+              </table>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <!-- ================= 11. TIMETABLE MANAGER ================= -->
+      <section id="tab-timetable" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>🗓️ Batch Timetable &amp; Lecture Schedule</h2>
+        </div>
+        <div class="table-responsive">
+          <table class="data-table timetable-table">
+            <thead>
+              <tr>
+                <th>Standard / Course</th>
+                <th>Days</th>
+                <th>Time Slot</th>
+                <th>Subjects</th>
+                <th>Faculty</th>
+                <th>Room</th>
+              </tr>
+            </thead>
+            <tbody id="timetableTableBody"></tbody>
+          </table>
+        </div>
+      </section>
+
+      <!-- ================= 12. HALL OF FAME ================= -->
+      <section id="tab-toppers" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>🏆 Hall of Fame — Academy Toppers &amp; Achievements</h2>
+          <button class="btn-primary" id="openAddTopperBtn">+ Add Topper</button>
+        </div>
+        <div id="toppersGalleryAdmin" class="toppers-gallery-grid"></div>
+      </section>
+
+      <!-- ================= 13. WHATSAPP QUICK ALERTS ================= -->
+      <section id="tab-whatsapp" class="admin-tab-content">
+        <div class="section-title-row">
+          <h2>💬 1-Click WhatsApp Parent Alerts</h2>
+        </div>
+        <p class="section-subtitle">Select a student, choose message type, and send pre-filled WhatsApp messages instantly to parents.</p>
+
+        <div class="dashboard-split-grid">
+          <div class="dash-card">
+            <h3>📱 Quick Alert Sender</h3>
+            <div class="admin-form">
+              <div class="form-group">
+                <label for="waStudentSelect">Select Student</label>
+                <select id="waStudentSelect"></select>
+              </div>
+              <div class="form-group">
+                <label>Message Type</label>
+                <div class="wa-type-buttons">
+                  <button class="btn-wa-type" data-wa-type="fee" onclick="sendWhatsAppAlert('fee')">💰 Fee Due Reminder</button>
+                  <button class="btn-wa-type" data-wa-type="test" onclick="sendWhatsAppAlert('test')">📊 Test Marks Alert</button>
+                  <button class="btn-wa-type" data-wa-type="absent" onclick="sendWhatsAppAlert('absent')">⚠️ Absence Notice</button>
+                  <button class="btn-wa-type" data-wa-type="notice" onclick="sendWhatsAppAlert('notice')">📢 General Notice</button>
+                  <button class="btn-wa-type" data-wa-type="custom" onclick="sendWhatsAppAlert('custom')">✏️ Custom Message</button>
+                </div>
+              </div>
+              <div class="form-group" id="customMsgGroup" style="display:none;">
+                <label for="waCustomMsg">Custom Message</label>
+                <textarea id="waCustomMsg" rows="3" placeholder="Type your custom message here..."></textarea>
+              </div>
+            </div>
+          </div>
+
+          <div class="dash-card">
+            <h3>📋 Bulk Alerts — All Parents</h3>
+            <div class="wa-bulk-buttons">
+              <button class="btn-primary" onclick="sendBulkWhatsAppAlert('fee')">💰 Fee Reminder to All Pending</button>
+              <button class="btn-primary" onclick="sendBulkWhatsAppAlert('notice')">📢 Notice Broadcast to All Parents</button>
+              <button class="btn-secondary" onclick="sendBulkWhatsAppAlert('welcome')">🎉 Welcome Message to All</button>
             </div>
           </div>
         </div>
@@ -428,6 +694,270 @@
           <button type="button" class="btn-secondary" onclick="closeNoteModal()">Cancel</button>
         </div>
       </form>
+    </div>
+  </div>
+
+  <!-- Add / Edit Board Question Paper Modal -->
+  <div id="paperModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3 id="paperModalTitle">Upload / Add Board Question Paper</h3>
+        <button class="modal-close" onclick="closePaperModal()">&times;</button>
+      </div>
+      <form id="paperModalForm" class="modal-form">
+        <div class="form-group">
+          <label for="modalPaperTitle">Paper Title <span class="required">*</span></label>
+          <input type="text" id="modalPaperTitle" placeholder="e.g. Class 10 SSC Mathematics Part 1 March 2024 Board Paper" required>
+        </div>
+        <div class="form-group">
+          <label for="modalPaperStandard">Standard / Class <span class="required">*</span></label>
+          <select id="modalPaperStandard" required>
+            <option value="Standard 10 (SSC)">Standard 10 (SSC)</option>
+            <option value="Standard 12 (HSC)">Standard 12 (HSC)</option>
+            <option value="Standard 9">Standard 9</option>
+            <option value="Standard 8">Standard 8</option>
+            <option value="Special: Stock Market">Special: Stock Market</option>
+            <option value="Special: AI & Generative AI">Special: AI &amp; Generative AI</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modalPaperSubject">Subject <span class="required">*</span></label>
+          <input type="text" id="modalPaperSubject" placeholder="e.g. Mathematics Part 1 (Algebra)" required>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="modalPaperYear">Year / Session <span class="required">*</span></label>
+            <input type="text" id="modalPaperYear" placeholder="e.g. March 2024" required>
+          </div>
+          <div class="form-group">
+            <label for="modalPaperType">Paper Category <span class="required">*</span></label>
+            <select id="modalPaperType" required>
+              <option value="Board PYQ">Board PYQ (Past Exam)</option>
+              <option value="Model Paper">Model Paper / Preliminary Mock</option>
+              <option value="SCERT Question Bank">SCERT Official Question Bank</option>
+            </select>
+          </div>
+        </div>
+        <div class="form-row-2">
+          <div class="form-group">
+            <label for="modalPaperMarks">Total Marks</label>
+            <input type="text" id="modalPaperMarks" placeholder="e.g. 40 Marks" value="40 Marks">
+          </div>
+          <div class="form-group">
+            <label for="modalPaperDuration">Duration</label>
+            <input type="text" id="modalPaperDuration" placeholder="e.g. 2 Hours" value="2 Hours">
+          </div>
+        </div>
+        <div class="form-group">
+          <label for="modalPaperDesc">Description &amp; Key Topics Included <span class="required">*</span></label>
+          <textarea id="modalPaperDesc" rows="3" placeholder="Official board examination question paper with worked-out solutions and marking scheme..." required></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Save Question Paper</button>
+          <button type="button" class="btn-secondary" onclick="closePaperModal()">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Test Result Modal -->
+  <div id="testModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Test / Exam Result</h3>
+        <button class="modal-close" onclick="document.getElementById('testModal').style.display='none'">&times;</button>
+      </div>
+      <form id="testModalForm" class="modal-form">
+        <div class="form-group">
+          <label for="modalTestStudent">Student <span class="required">*</span></label>
+          <select id="modalTestStudent" required></select>
+        </div>
+        <div class="form-group">
+          <label for="modalTestTitle">Test / Exam Title <span class="required">*</span></label>
+          <input type="text" id="modalTestTitle" placeholder="e.g. Chapter 1: Linear Equations Unit Test" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTestSubject">Subject <span class="required">*</span></label>
+          <input type="text" id="modalTestSubject" placeholder="e.g. Mathematics Part 1 (Algebra)" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTestDate">Test Date</label>
+          <input type="date" id="modalTestDate" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTestTotal">Total Marks <span class="required">*</span></label>
+          <input type="number" id="modalTestTotal" placeholder="e.g. 40" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTestObtained">Marks Obtained <span class="required">*</span></label>
+          <input type="number" id="modalTestObtained" placeholder="e.g. 36" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTestRemarks">Teacher's Remarks</label>
+          <textarea id="modalTestRemarks" rows="2" placeholder="e.g. Good attempt. Practice more numericals."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Save Test Result</button>
+          <button type="button" class="btn-secondary" onclick="document.getElementById('testModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Receipt Modal -->
+  <div id="receiptModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Record Fee Payment</h3>
+        <button class="modal-close" onclick="document.getElementById('receiptModal').style.display='none'">&times;</button>
+      </div>
+      <form id="receiptModalForm" class="modal-form">
+        <div class="form-group">
+          <label for="modalReceiptStudent">Student <span class="required">*</span></label>
+          <select id="modalReceiptStudent" required></select>
+        </div>
+        <div class="form-group">
+          <label for="modalReceiptAmount">Amount (₹) <span class="required">*</span></label>
+          <input type="number" id="modalReceiptAmount" placeholder="e.g. 1000" required>
+        </div>
+        <div class="form-group">
+          <label for="modalReceiptTerm">Payment Term / Description <span class="required">*</span></label>
+          <input type="text" id="modalReceiptTerm" placeholder="e.g. Month of October 2026" required>
+        </div>
+        <div class="form-group">
+          <label for="modalReceiptMode">Payment Mode</label>
+          <select id="modalReceiptMode">
+            <option value="UPI (GPay)">UPI (GPay)</option>
+            <option value="UPI (PhonePe)">UPI (PhonePe)</option>
+            <option value="UPI (Paytm)">UPI (Paytm)</option>
+            <option value="UPI (BHIM)">UPI (BHIM)</option>
+            <option value="Cash">Cash</option>
+            <option value="Bank Transfer">Bank Transfer</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label for="modalReceiptTxnId">Transaction / Reference ID</label>
+          <input type="text" id="modalReceiptTxnId" placeholder="e.g. UPI/261001/982211">
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Save Receipt &amp; Mark Paid</button>
+          <button type="button" class="btn-secondary" onclick="document.getElementById('receiptModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Add Topper Modal -->
+  <div id="topperModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Add Topper / Achievement</h3>
+        <button class="modal-close" onclick="document.getElementById('topperModal').style.display='none'">&times;</button>
+      </div>
+      <form id="topperModalForm" class="modal-form">
+        <div class="form-group">
+          <label for="modalTopperName">Student Name <span class="required">*</span></label>
+          <input type="text" id="modalTopperName" placeholder="e.g. Sayali Sawant" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTopperScore">Score / Percentage <span class="required">*</span></label>
+          <input type="text" id="modalTopperScore" placeholder="e.g. 96.4%" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTopperExam">Exam Name</label>
+          <input type="text" id="modalTopperExam" placeholder="e.g. SSC Board Exam" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTopperYear">Year</label>
+          <input type="text" id="modalTopperYear" placeholder="e.g. 2025" required>
+        </div>
+        <div class="form-group">
+          <label for="modalTopperSubjects">Subject Highlights</label>
+          <input type="text" id="modalTopperSubjects" placeholder="e.g. Maths: 100/100 • Science: 98/100">
+        </div>
+        <div class="form-group">
+          <label for="modalTopperQuote">Student / Parent Testimonial</label>
+          <textarea id="modalTopperQuote" rows="2" placeholder="What the student or parent says about the academy..."></textarea>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Add to Hall of Fame</button>
+          <button type="button" class="btn-secondary" onclick="document.getElementById('topperModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Doubt Reply Modal -->
+  <div id="doubtReplyModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>Reply to Student Doubt</h3>
+        <button class="modal-close" onclick="document.getElementById('doubtReplyModal').style.display='none'">&times;</button>
+      </div>
+      <form id="doubtReplyForm" class="modal-form">
+        <input type="hidden" id="modalDoubtId">
+        <div class="form-group">
+          <label>Student's Question:</label>
+          <p id="modalDoubtQuestion" style="background:#f0f0f0;padding:12px;border-radius:8px;font-style:italic;"></p>
+        </div>
+        <div class="form-group">
+          <label for="modalDoubtReply">Your Answer / Solution <span class="required">*</span></label>
+          <textarea id="modalDoubtReply" rows="4" placeholder="Type your detailed answer or solution with steps..." required></textarea>
+        </div>
+        <div class="form-group">
+          <label for="modalDoubtRepliedBy">Answered By</label>
+          <select id="modalDoubtRepliedBy">
+            <option value="Nikhillesh Bhatkar Sir">Nikhillesh Bhatkar Sir</option>
+            <option value="Amit Pawaskar Sir">Amit Pawaskar Sir</option>
+          </select>
+        </div>
+        <div class="modal-actions">
+          <button type="submit" class="btn-primary">Submit Answer</button>
+          <button type="button" class="btn-secondary" onclick="document.getElementById('doubtReplyModal').style.display='none'">Cancel</button>
+        </div>
+      </form>
+    </div>
+  </div>
+
+  <!-- Print Receipt Modal -->
+  <div id="printReceiptModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card modal-print-receipt">
+      <div class="modal-header">
+        <h3>🧾 Fee Receipt — Nikhillesh Bhatkar Learning Academy</h3>
+        <button class="modal-close" onclick="document.getElementById('printReceiptModal').style.display='none'">&times;</button>
+      </div>
+      <div id="printReceiptContent" class="receipt-print-area">
+        <!-- Generated receipt content will appear here -->
+      </div>
+      <div class="modal-actions">
+        <button class="btn-primary" onclick="window.print()">🖨️ Print Receipt</button>
+        <button class="btn-secondary" onclick="document.getElementById('printReceiptModal').style.display='none'">Close</button>
+      </div>
+    </div>
+  </div>
+
+  <!-- Attendance Marking Modal -->
+  <div id="attendanceModal" class="modal-overlay" style="display:none;">
+    <div class="modal-card">
+      <div class="modal-header">
+        <h3>📝 Mark Today's Attendance</h3>
+        <button class="modal-close" onclick="document.getElementById('attendanceModal').style.display='none'">&times;</button>
+      </div>
+      <div class="admin-form">
+        <div class="form-group">
+          <label for="attendanceDateInput">Date</label>
+          <input type="date" id="attendanceDateInput">
+        </div>
+        <div class="form-group">
+          <label for="attendanceTopicInput">Today's Topic / Chapter</label>
+          <input type="text" id="attendanceTopicInput" placeholder="e.g. SSC Geometry - Chapter 3 Circle">
+        </div>
+        <div id="attendanceChecklistContainer" class="attendance-checklist"></div>
+        <div class="modal-actions">
+          <button class="btn-primary" id="saveAttendanceBtn">✅ Save Attendance</button>
+          <button class="btn-secondary" onclick="document.getElementById('attendanceModal').style.display='none'">Cancel</button>
+        </div>
+      </div>
     </div>
   </div>
 
